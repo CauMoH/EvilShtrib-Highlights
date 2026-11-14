@@ -7,3 +7,7 @@ demos/*.zip
 *.tmp
 __pycache__/
 *.pyc
+*.wav
+temp_*.mp4
+tools/peak_frames/
+tools/montage_samples/
