@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvilShtrib Highlights — Топ-10 Моментов</title>
+    <style>
+        :root {
+            --bg-dark: #0f1117;
+            --card-bg: #1a1d26;
+            --accent: #00ff44;
+            --accent-glow: rgba(0, 255, 68, 0.35);
+            --text-main: #e6edf3;
+            --text-dim: #8b949e;
+            --border: #30363d;
+            --danger: #ff4757;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            padding: 24px;
+            min-height: 100vh;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .header h1 {
+            font-size: 28px;
+            color: var(--accent);
+            text-shadow: 0 0 12px var(--accent-glow);
+            margin-bottom: 8px;
+        }
+        .header p {
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+        .video-wrapper {
+            position: relative;
+            background: #000;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .card-body {
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .clip-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .clip-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .badge {
+            font-size: 11px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .badge-hs {
+            background-color: var(--danger);
+            color: #fff;
+        }
+        .badge-weapon {
+            background-color: #238636;
+            color: #fff;
+        }
+        .badge-map {
+            background-color: #388bfd;
+            color: #fff;
+        }
+        .meta-list {
+            list-style: none;
+            font-size: 13px;
+            color: var(--text-dim);
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+        .meta-list strong {
+            color: var(--text-main);
+        }
+        .description {
+            font-size: 13px;
+            color: #c9d1d9;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧟 EvilShtrib Highlights — Топ-10 Моментов</h1>
+        <p>1280x720 HD @ 30 FPS • Формат MP4 (H.264 / AVC1) • Нативные хайлайты с сервера CS 1.6 Biohazard</p>
+    </div>
+
+    <div class="grid">
+        <!-- Clip 1 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips/clip_01.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает воспроизведение видео.
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="clip-title">
+                    <span class="clip-name">Ролик #01: Нож в голову</span>
+                    <span class="badge badge-hs">HEADSHOT</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <span class="badge badge-weapon">KNIFE</span>
+                    <span class="badge badge-map">bio_asalto_f</span>
+                </div>
+                <ul class="meta-list">
+                    <li><strong>Убийца:</strong> Player_5 (Slot #5)</li>
+                    <li><strong>Длительность:</strong> 5.5 сек (166 кадров)</li>
+                    <li><strong>Таймкод:</strong> 1142.9s – 1148.4s</li>
+                </ul>
+                <p class="description">Килл ножом в голову: зрелищная дуэль на ножах с зомби в упор на мосту.</p>
+            </div>
+        </div>
+
+        <!-- Clip 2 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips/clip_02.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="clip-title">
+                    <span class="clip-name">Ролик #02: Дабл-килл скорострелом</span>
+                    <span class="badge badge-weapon">2 ФРАГА</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <span class="badge badge-weapon">SG-550</span>
+                    <span class="badge badge-map">bio_asalto_f</span>
+                </div>
+                <ul class="meta-list">
+                    <li><strong>Убийца:</strong> Player_9 (Slot #9)</li>
+                    <li><strong>Длительность:</strong> 9.5 сек (286 кадров)</li>
+                    <li><strong>Таймкод:</strong> 56.2s – 65.7s</li>
+                </ul>
+                <p class="description">Дабл-килл скорострелом: методичный отстрел двух штурмующих зомби на подходе к базе.</p>
+            </div>
+        </div>
+
+        <!-- Clip 3 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips/clip_03.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="clip-title">
+                    <span class="clip-name">Ролик #03: Ваншот с AWP</span>
+                    <span class="badge badge-hs">HEADSHOT</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <span class="badge badge-weapon">AWP</span>
+                    <span class="badge badge-map">bio_arena_fl</span>
+                </div>
+                <ul class="meta-list">
+                    <li><strong>Убийца:</strong> Player_7 (Slot #7)</li>
+                    <li><strong>Длительность:</strong> 5.5 сек (166 кадров)</li>
+                    <li><strong>Таймкод:</strong> 1159.9s – 1165.4s</li>
+                </ul>
+                <p class="description">Ваншот с AWP в голову: сокрушительный снайперский выстрел по бегущему зомби.</p>
+            </div>
+        </div>
+
+        <!-- Clip 4 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips/clip_04.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="clip-title">
+                    <span class="clip-name">Ролик #04: AWP флик-шот</span>
+                    <span class="badge badge-hs">HEADSHOT</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <span class="badge badge-weapon">AWP</span>
+                    <span class="badge badge-map">zm_colors_rb3</span>
+                </div>
+                <ul class="meta-list">
+                    <li><strong>Убийца:</strong> Player_5 (Slot #5)</li>
+                    <li><strong>Длительность:</strong> 5.5 сек (166 кадров)</li>
+                    <li><strong>Таймкод:</strong> 995.0s – 1000.5s</li>
+                </ul>
+                <p class="description">Снайперский ваншот летящего зомби на цветных блоках с AWP.</p>
+            </div>
+        </div>
+
+        <!-- Clip 5 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips/clip_05.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="clip-title">
+                    <span class="clip-name">Ролик #05: Спрей с MP5</span>
+                    <span class="badge badge-weapon">2 ФРАГА</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <span class="badge badge-weapon">MP5-NAVY</span>
+                    <span class="badge badge-map">bio_$2000$_rbs_f2</span>
+                </div>
+                <ul class="meta-list">
+                    <li><strong>Убийца:</strong> Player_8 (Slot #8)</li>
+                    <li><strong>Длительность:</strong> 9.5 сек (286 кадров)</li>
+                    <li><strong>Таймкод:</strong> 123.8s – 133.3s</li>
+                </ul>
+                <p class="description">Дабл-килл со спреем MP5: быстрое уничтожение двух заражённых на короткой дистанции.</p>
+            </div>
+        </div>
+
+        <!-- Clip 6 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips/clip_06.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="clip-title">
+                    <span class="clip-name">Ролик #06: Серия с UMP-45</span>
+                    <span class="badge badge-weapon">2 ФРАГА</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <span class="badge badge-weapon">UMP-45</span>
+                    <span class="badge badge-map">bio_arena_fl</span>
+                </div>
+                <ul class="meta-list">
+                    <li><strong>Убийца:</strong> Player_7 (Slot #7)</li>
+                    <li><strong>Длительность:</strong> 6.6 сек (199 кадров)</li>
+                    <li><strong>Таймкод:</strong> 1232.4s – 1239.0s</li>
+                </ul>
+                <p class="description">Серия из 2 фрагов с UMP-45: методичный расстрел двух зомби за 6 секунд.</p>
+            </div>
+        </div>
+
+        <!-- Clip 7 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips/clip_07.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="clip-title">
+                    <span class="clip-name">Ролик #07: Хедшот с Desert Eagle</span>
+                    <span class="badge badge-hs">HEADSHOT</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <span class="badge badge-weapon">DEAGLE</span>
+                    <span class="badge badge-map">bio_arena_fl</span>
+                </div>
+                <ul class="meta-list">
+                    <li><strong>Убийца:</strong> Player_6 (Slot #6)</li>
+                    <li><strong>Длительность:</strong> 5.5 сек (166 кадров)</li>
+                    <li><strong>Таймкод:</strong> 914.4s – 919.9s</li>
+                </ul>
+                <p class="description">Хедшот с Дигла: одиночный прицельный выстрел .50 калибром точно в голову.</p>
+            </div>
+        </div>
+
+        <!-- Clip 8 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips/clip_08.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="clip-title">
+                    <span class="clip-name">Ролик #08: Deagle One-Deag</span>
+                    <span class="badge badge-hs">HEADSHOT</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <span class="badge badge-weapon">DEAGLE</span>
+                    <span class="badge badge-map">bio_blocks_pro</span>
+                </div>
+                <ul class="meta-list">
+                    <li><strong>Убийца:</strong> Player_2 (Slot #2)</li>
+                    <li><strong>Длительность:</strong> 5.5 сек (166 кадров)</li>
+                    <li><strong>Таймкод:</strong> 59.0s – 64.5s</li>
+                </ul>
+                <p class="description">Deagle One-Deag: мгновенная ликвидация зомби на блочной арене.</p>
+            </div>
+        </div>
+
+        <!-- Clip 9 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips/clip_09.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="clip-title">
+                    <span class="clip-name">Ролик #09: Хедшот со Скаута</span>
+                    <span class="badge badge-hs">HEADSHOT</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <span class="badge badge-weapon">SCOUT</span>
+                    <span class="badge badge-map">bio_$2000$_rbs_f2</span>
+                </div>
+                <ul class="meta-list">
+                    <li><strong>Убийца:</strong> Player_6 (Slot #6)</li>
+                    <li><strong>Длительность:</strong> 5.5 сек (166 кадров)</li>
+                    <li><strong>Таймкод:</strong> 954.4s – 959.9s</li>
+                </ul>
+                <p class="description">Хедшот со Скаута: лёгкая снайперская винтовка в движении — чистый хед.</p>
+            </div>
+        </div>
+
+        <!-- Clip 10 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips/clip_10.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="clip-title">
+                    <span class="clip-name">Ролик #10: Помпа в упор</span>
+                    <span class="badge badge-hs">HEADSHOT</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <span class="badge badge-weapon">M3 SUPER 90</span>
+                    <span class="badge badge-map">bio_$2000$_rbs_f2</span>
+                </div>
+                <ul class="meta-list">
+                    <li><strong>Убийца:</strong> Player_3 (Slot #3)</li>
+                    <li><strong>Длительность:</strong> 5.5 сек (166 кадров)</li>
+                    <li><strong>Таймкод:</strong> 1065.5s – 1071.0s</li>
+                </ul>
+                <p class="description">Дробовик в упор в голову: сокрушительный залп картечью с помпового дробовика.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
