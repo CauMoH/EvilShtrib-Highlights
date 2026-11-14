@@ -11,3 +11,7 @@ __pycache__/
 temp_*.mp4
 tools/peak_frames/
 tools/montage_samples/
+tools/hyper_verify_frames/
+tools/contact_sheets/
+tools/*.jpg
+

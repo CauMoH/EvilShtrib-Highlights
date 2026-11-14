@@ -1,0 +1,641 @@
+import os
+
+HTML_CONTENT = """<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvilShtrib Highlights — 60-Second Hyper-Action Montage (Classic Biohazard)</title>
+    <style>
+        :root {
+            --bg-dark: #0a0c10;
+            --card-bg: #131720;
+            --accent: #00ff66;
+            --accent-glow: rgba(0, 255, 102, 0.4);
+            --cyan: #00e5ff;
+            --cyan-glow: rgba(0, 229, 255, 0.35);
+            --text-main: #f0f6fc;
+            --text-dim: #8b949e;
+            --border: #21262d;
+            --border-highlight: #30363d;
+            --danger: #ff4757;
+            --gold: #ffb703;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            padding: 24px;
+            min-height: 100vh;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .header h1 {
+            font-size: 32px;
+            color: var(--accent);
+            text-shadow: 0 0 16px var(--accent-glow);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .header p {
+            color: var(--text-dim);
+            font-size: 15px;
+        }
+        .server-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 255, 102, 0.08);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 8px 18px;
+            margin-top: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .server-banner:hover {
+            background: rgba(0, 255, 102, 0.16);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        .server-ip {
+            font-family: "Consolas", monospace;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .copy-hint {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        /* --- HERO MONTAGE SECTION --- */
+        .montage-hero {
+            max-width: 1100px;
+            margin: 0 auto 48px auto;
+            background: linear-gradient(180deg, #161b26 0%, #0d1117 100%);
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 35px var(--accent-glow);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .montage-header {
+            padding: 16px 24px;
+            background: rgba(0, 255, 102, 0.1);
+            border-bottom: 1px solid rgba(0, 255, 102, 0.25);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .montage-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .montage-badge {
+            background: var(--danger);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .montage-badge.hltv {
+            background: #0077ff;
+        }
+        .montage-badge.kills {
+            background: #00c853;
+        }
+        .montage-music {
+            font-size: 13px;
+            color: var(--cyan);
+        }
+        .montage-video-box {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: #000;
+        }
+        .montage-video-box video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .montage-footer {
+            padding: 18px 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            background: #11141c;
+            border-top: 1px solid var(--border);
+        }
+        .montage-spec {
+            font-size: 13px;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+        .montage-spec strong {
+            color: var(--text-main);
+        }
+        .fx-tag {
+            display: inline-block;
+            background: rgba(0, 229, 255, 0.12);
+            color: var(--cyan);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-radius: 4px;
+            font-size: 11px;
+            padding: 2px 6px;
+            margin: 2px;
+        }
+
+        /* --- CLIPS GRID --- */
+        .section-title {
+            max-width: 1400px;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            border-left: 4px solid var(--accent);
+            padding-left: 12px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto 48px auto;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(0, 255, 102, 0.15);
+        }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background-color: #000;
+        }
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .score {
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 700;
+            background: rgba(255, 183, 3, 0.12);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 183, 3, 0.3);
+        }
+        .meta-row {
+            display: flex;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--text-dim);
+            flex-wrap: wrap;
+        }
+        .meta-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .victims {
+            font-size: 12px;
+            color: var(--text-dim);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px 10px;
+            border-radius: 6px;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+        .victims strong {
+            color: #ff6b6b;
+        }
+        .badge-hs {
+            color: #ff4757;
+            font-weight: bold;
+            font-size: 11px;
+            background: rgba(255, 71, 87, 0.12);
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-left: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>☣ EVILSHTRIB > CLASSIC BIOHAZARD ☣</h1>
+        <p>60-Секундный Hyper-Action Промо-Монтаж: 36 Зомби-Киллов в 12 Взрывных Сериях (100% In-Eye, 0% Пауз)</p>
+        <div class="server-banner" onclick="navigator.clipboard.writeText('connect 185.225.201.113:27015'); alert('Команда скопирована в буфер: connect 185.225.201.113:27015');">
+            <span>🎮</span>
+            <span class="server-ip">connect 185.225.201.113:27015</span>
+            <span class="copy-hint">(нажмите, чтобы скопировать)</span>
+        </div>
+    </div>
+
+    <!-- PRIMARY 60-SECOND HLTV MONTAGE -->
+    <div class="montage-hero">
+        <div class="montage-header">
+            <div class="montage-title">
+                <span class="montage-badge hltv">REAL HLTV MATCHES</span>
+                <span class="montage-badge kills">36 KILLS / 12 STREAKS</span>
+                <span>🔥 EvilShtrib 60s Hyper-Action Promo Montage</span>
+            </div>
+            <div class="montage-music">
+                🎵 Alexi Action & Dedpled — <em>Negative (Phonk House)</em> [CC BY 3.0]
+            </div>
+        </div>
+        <div class="montage-video-box">
+            <video controls preload="metadata">
+                <source src="EvilShtrib_60s_Montage.mp4" type="video/mp4">
+                Ваш браузер не поддерживает встроенное воспроизведение видео.
+            </video>
+        </div>
+        <div class="montage-footer">
+            <div class="montage-spec">
+                <strong>Длительность:</strong> ровно 60.0 сек (1800 кадров @ 30 FPS) | <strong>Разрешение:</strong> 1280x720 HD<br>
+                <strong>Плотность экшена:</strong> 36 реальных фрагов в 12 сериях (1 килл каждые 1.6 секунды, 0% мертвого времени)<br>
+                <strong>Камера:</strong> 100% In-Eye от первого лица реального стрелка (нативная фиксация <code>follow &lt;killer&gt;</code>)<br>
+                <strong>Битсинк:</strong> 808-sub бас дроп точно на 4.5с при первом хедшоте из FAMAS!
+            </div>
+            <div class="montage-spec">
+                <strong>12 Уникальных VFX на сериях убийств:</strong><br>
+                <span class="fx-tag">#1 FAMAS Shockwave & 808 Drop</span>
+                <span class="fx-tag">#2 UMP45 Kinetic Zoom</span>
+                <span class="fx-tag">#3 Galil Bullet-Time Aberration</span>
+                <span class="fx-tag">#4 M4A1 Dual Strobe</span>
+                <span class="fx-tag">#5 M4A1 Negative Invert</span>
+                <span class="fx-tag">#6 M4A1 Silenced Freeze Bloom</span>
+                <span class="fx-tag">#7 HE Bio-Scanner Radar</span>
+                <span class="fx-tag">#8 HE Blood Splatter</span>
+                <span class="fx-tag">#9 Galil Recoil Tilt</span>
+                <span class="fx-tag">#10 UMP/HE RGB Glitch</span>
+                <span class="fx-tag">#11 M4A1 High-Freq Shockwave</span>
+                <span class="fx-tag">#12 XM1014 Heavy Shotgun Strobe</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12 REAL DEMO CLIPS -->
+    <div class="section-title">
+        <span>🎬</span>
+        <span>12 Исходных Серий Мульти-Киллов (100% In-Eye, First-Person с Моделью Оружия)</span>
+    </div>
+
+    <div class="grid">
+        <!-- Clip 01 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips_hyper/clip_01.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <span>#01 — Player_21 <span class="badge-hs">5X MULTI-KILL</span></span>
+                    <span class="score">5 Kills</span>
+                </div>
+                <div class="meta-row">
+                    <span>🗺️ bio_ziger_azt</span>
+                    <span>🔫 FAMAS, HE Grenade</span>
+                    <span>⏱️ 5.67s</span>
+                </div>
+                <div class="victims">
+                    Уничтожены: <strong>Zombie_26</strong> [HS], <strong>Zombie_16</strong> [HS], <strong>Zombie_23</strong>, <strong>Zombie_24</strong>, <strong>Zombie_30</strong> [HS]
+                </div>
+            </div>
+        </div>
+
+        <!-- Clip 02 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips_hyper/clip_02.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <span>#02 — Player_10 <span class="badge-hs">3X HEADSHOT</span></span>
+                    <span class="score">3 Kills</span>
+                </div>
+                <div class="meta-row">
+                    <span>🗺️ zm_biohazard_base_mx004</span>
+                    <span>🔫 UMP45 Headshots</span>
+                    <span>⏱️ 3.33s</span>
+                </div>
+                <div class="victims">
+                    Уничтожены: <strong>Zombie_4</strong> [HS], <strong>Zombie_13</strong> [HS], <strong>Zombie_15</strong> [HS]
+                </div>
+            </div>
+        </div>
+
+        <!-- Clip 03 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips_hyper/clip_03.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <span>#03 — Player_21 <span class="badge-hs">TRIPLE KILL</span></span>
+                    <span class="score">3 Kills</span>
+                </div>
+                <div class="meta-row">
+                    <span>🗺️ bio_talka</span>
+                    <span>🔫 IDF Galil Headshots</span>
+                    <span>⏱️ 5.33s</span>
+                </div>
+                <div class="victims">
+                    Уничтожены: <strong>Zombie_27</strong> [HS], <strong>Zombie_4</strong> [HS], <strong>Zombie_10</strong> [HS]
+                </div>
+            </div>
+        </div>
+
+        <!-- Clip 04 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips_hyper/clip_04.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <span>#04 — Player_22 <span class="badge-hs">TRIPLE KILL</span></span>
+                    <span class="score">3 Kills</span>
+                </div>
+                <div class="meta-row">
+                    <span>🗺️ bio_snow_na2</span>
+                    <span>🔫 M4A1 Point-Blank Spray</span>
+                    <span>⏱️ 2.83s</span>
+                </div>
+                <div class="victims">
+                    Уничтожены: <strong>Zombie_5</strong> [HS], <strong>Zombie_19</strong> [HS], <strong>Zombie_20</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clip 05 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips_hyper/clip_05.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <span>#05 — Player_8 <span class="badge-hs">DOUBLE HS (0.67s)</span></span>
+                    <span class="score">2 Kills</span>
+                </div>
+                <div class="meta-row">
+                    <span>🗺️ bio_oldhouse</span>
+                    <span>🔫 M4A1 Carbine Double</span>
+                    <span>⏱️ 2.33s</span>
+                </div>
+                <div class="victims">
+                    Уничтожены: <strong>Zombie_2</strong> [HS], <strong>Zombie_14</strong> [HS]
+                </div>
+            </div>
+        </div>
+
+        <!-- Clip 06 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips_hyper/clip_06.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <span>#06 — Player_21 <span class="badge-hs">DOUBLE HS (0.73s)</span></span>
+                    <span class="score">2 Kills</span>
+                </div>
+                <div class="meta-row">
+                    <span>🗺️ bio_arena_fl</span>
+                    <span>🔫 M4A1 Silenced HS</span>
+                    <span>⏱️ 2.67s</span>
+                </div>
+                <div class="victims">
+                    Уничтожены: <strong>[EZ] Site: evilzomb.ru</strong> [HS], <strong>Zombie_24</strong> [HS]
+                </div>
+            </div>
+        </div>
+
+        <!-- Clip 07 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips_hyper/clip_07.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <span>#07 — Player_15 <span class="badge-hs">3X GRENADE WIPEOUT</span></span>
+                    <span class="score">3 Kills</span>
+                </div>
+                <div class="meta-row">
+                    <span>🗺️ bio_snow_na2</span>
+                    <span>💣 HE Grenade Wipeout</span>
+                    <span>⏱️ 4.17s</span>
+                </div>
+                <div class="victims">
+                    Уничтожены: <strong>Zombie_16</strong>, <strong>Zombie_24</strong>, <strong>Zombie_28</strong> (одной гранатой)
+                </div>
+            </div>
+        </div>
+
+        <!-- Clip 08 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips_hyper/clip_08.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <span>#08 — Player_2 <span class="badge-hs">4X GRENADE BARRAGE</span></span>
+                    <span class="score">4 Kills</span>
+                </div>
+                <div class="meta-row">
+                    <span>🗺️ bio_ziger_azt</span>
+                    <span>💣 HE Grenades Defense</span>
+                    <span>⏱️ 5.50s</span>
+                </div>
+                <div class="victims">
+                    Уничтожены: <strong>Zombie_23</strong>, <strong>Zombie_24</strong>, <strong>Zombie_26</strong>, <strong>Zombie_30</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clip 09 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips_hyper/clip_09.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <span>#09 — Player_6 <span class="badge-hs">TRIPLE HS</span></span>
+                    <span class="score">3 Kills</span>
+                </div>
+                <div class="meta-row">
+                    <span>🗺️ zm_biohazard_base_mx004</span>
+                    <span>🔫 IDF Galil Headshots</span>
+                    <span>⏱️ 5.83s</span>
+                </div>
+                <div class="victims">
+                    Уничтожены: <strong>Zombie_8</strong> [HS], <strong>Zombie_5</strong> [HS], <strong>Zombie_19</strong> [HS]
+                </div>
+            </div>
+        </div>
+
+        <!-- Clip 10 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips_hyper/clip_10.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <span>#10 — Player_21 <span class="badge-hs">TRIPLE KILL</span></span>
+                    <span class="score">3 Kills</span>
+                </div>
+                <div class="meta-row">
+                    <span>🗺️ bio_valak</span>
+                    <span>🔫 UMP45, Grenade & USP</span>
+                    <span>⏱️ 5.83s</span>
+                </div>
+                <div class="victims">
+                    Уничтожены: <strong>Zombie_11</strong> [HS], <strong>Zombie_15</strong>, <strong>Zombie_24</strong> [HS]
+                </div>
+            </div>
+        </div>
+
+        <!-- Clip 11 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips_hyper/clip_11.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <span>#11 — Player_12 <span class="badge-hs">TRIPLE KILL</span></span>
+                    <span class="score">3 Kills</span>
+                </div>
+                <div class="meta-row">
+                    <span>🗺️ zm_restart_v3</span>
+                    <span>🔫 M4A1 Carved Headshots</span>
+                    <span>⏱️ 5.83s</span>
+                </div>
+                <div class="victims">
+                    Уничтожены: <strong>Zombie_16</strong>, <strong>Zombie_14</strong> [HS], <strong>Zombie_19</strong> [HS]
+                </div>
+            </div>
+        </div>
+
+        <!-- Clip 12 -->
+        <div class="card">
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="clips_hyper/clip_12.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <span>#12 — Player_1 <span class="badge-hs">DOUBLE HS</span></span>
+                    <span class="score">2 Kills</span>
+                </div>
+                <div class="meta-row">
+                    <span>🗺️ zm_2day_rbt_f4</span>
+                    <span>🔫 XM1014 Auto-Shotgun</span>
+                    <span>⏱️ 3.67s</span>
+                </div>
+                <div class="victims">
+                    Уничтожены: <strong>Zombie_8</strong> [HS], <strong>Zombie_18</strong> [HS]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PREVIOUS 42s TEST MONTAGE -->
+    <div class="section-title">
+        <span>📼</span>
+        <span>Предыдущий 42-Секундный Тестовый Монтаж (Initial Test Montage)</span>
+    </div>
+
+    <div class="montage-hero" style="margin-bottom: 24px;">
+        <div class="montage-header">
+            <div class="montage-title">
+                <span class="montage-badge">INITIAL TEST</span>
+                <span>EvilShtrib Kill Highlights (42s Test Version)</span>
+            </div>
+            <div class="montage-music">
+                🎵 Alexi Action & Dedpled — <em>Negative (Phonk House)</em>
+            </div>
+        </div>
+        <div class="montage-video-box">
+            <video controls preload="metadata">
+                <source src="EvilShtrib_Montage.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+</body>
+</html>
+"""
+
+with open(r"c:\Users\CauMo\source\repos\EvilShtrib-Highlights\index.html", "w", encoding="utf-8") as f:
+    f.write(HTML_CONTENT)
+
+print("Updated index.html successfully!")
