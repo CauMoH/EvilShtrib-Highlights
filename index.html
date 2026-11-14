@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EvilShtrib Highlights & Promo Montage — Classic Biohazard [24/7]</title>
+    <title>EvilShtrib Highlights — 60-Second Real Match Montage (Classic Biohazard)</title>
     <style>
         :root {
             --bg-dark: #0a0c10;
@@ -109,6 +109,9 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+        .montage-badge.hltv {
+            background: #0077ff;
+        }
         .montage-music {
             font-size: 13px;
             color: var(--cyan);
@@ -158,20 +161,21 @@
         .section-title {
             max-width: 1400px;
             margin: 0 auto 20px auto;
-            font-size: 20px;
-            color: var(--text-main);
             display: flex;
             align-items: center;
             gap: 10px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            border-left: 4px solid var(--accent);
+            padding-left: 12px;
         }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 0 auto 48px auto;
         }
         .card {
             background-color: var(--card-bg);
@@ -203,60 +207,60 @@
         }
         .card-body {
             padding: 16px;
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
+            flex: 1;
         }
         .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 600;
-            font-size: 16px;
         }
         .score {
-            font-size: 12px;
+            font-size: 13px;
+            color: var(--gold);
             font-weight: 700;
+            background: rgba(255, 183, 3, 0.12);
             padding: 2px 8px;
-            background: rgba(0, 255, 102, 0.15);
-            color: var(--accent);
             border-radius: 4px;
-            border: 1px solid rgba(0, 255, 102, 0.3);
-        }
-        .badge.hs {
-            background: rgba(255, 71, 87, 0.2);
-            color: var(--danger);
-            border: 1px solid rgba(255, 71, 87, 0.4);
-            font-size: 11px;
-            font-weight: bold;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-left: 6px;
+            border: 1px solid rgba(255, 183, 3, 0.3);
         }
         .meta-row {
             display: flex;
+            gap: 12px;
             font-size: 13px;
             color: var(--text-dim);
-            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .meta-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
         .victims {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 8px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            border-left: 2px solid var(--danger);
-        }
-        .victims strong {
-            color: #e6edf3;
-        }
-        .author-box {
             font-size: 12px;
             color: var(--text-dim);
-            margin-top: 36px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            padding-top: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px 10px;
+            border-radius: 6px;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+        .victims strong {
+            color: #ff6b6b;
+        }
+        .badge-hs {
+            color: #ff4757;
+            font-weight: bold;
+            font-size: 11px;
+            background: rgba(255, 71, 87, 0.12);
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-left: 4px;
         }
     </style>
 </head>
@@ -264,7 +268,7 @@
 
     <div class="header">
         <h1>☣ EVILSHTRIB > CLASSIC BIOHAZARD ☣</h1>
-        <p>Официальные демо-хайлайты и эпический промо-монтаж уничтожения зомби</p>
+        <p>1-Минутный Эпический Промо-Монтаж и Топ-10 Моментов из Реальных Демок Сервера</p>
         <div class="server-banner" onclick="navigator.clipboard.writeText('connect 185.225.201.113:27015'); alert('Команда скопирована в буфер: connect 185.225.201.113:27015');">
             <span>🎮</span>
             <span class="server-ip">connect 185.225.201.113:27015</span>
@@ -272,12 +276,12 @@
         </div>
     </div>
 
-    <!-- HERO PROMO MONTAGE -->
+    <!-- PRIMARY 60-SECOND HLTV MONTAGE -->
     <div class="montage-hero">
         <div class="montage-header">
             <div class="montage-title">
-                <span class="montage-badge">OFFICIAL MONTAGE</span>
-                <span>💥 EvilShtrib Kill Highlights (Phonk House Promo Reel)</span>
+                <span class="montage-badge hltv">REAL HLTV MATCHES</span>
+                <span>🔥 EvilShtrib 60-Second Real Match Montage (Phonk House Promo Reel)</span>
             </div>
             <div class="montage-music">
                 🎵 Alexi Action & Dedpled — <em>Negative (Phonk House)</em> [CC BY 3.0]
@@ -285,36 +289,36 @@
         </div>
         <div class="montage-video-box">
             <video controls preload="metadata">
-                <source src="EvilShtrib_Montage.mp4" type="video/mp4">
+                <source src="EvilShtrib_60s_Montage.mp4" type="video/mp4">
                 Ваш браузер не поддерживает встроенное воспроизведение видео.
             </video>
         </div>
         <div class="montage-footer">
             <div class="montage-spec">
-                <strong>Длительность:</strong> 42.1 сек | <strong>Разрешение:</strong> 1280x720 HD @ 30 FPS<br>
-                <strong>Тайминг моментов:</strong> строго $\ge 1.3$ сек до килла и $\ge 1.6$ сек после<br>
-                <strong>Аудио-дроп:</strong> мощный 808-sub бас синхронизирован точно с первым убийством на 4.5с!
+                <strong>Длительность:</strong> ровно 60.0 сек (1800 кадров @ 30 FPS) | <strong>Разрешение:</strong> 1280x720 HD<br>
+                <strong>Источник:</strong> 10 реальных серверных демок с <a href="https://evilzomb.ru/hltv/" target="_blank" style="color:var(--cyan); text-decoration:none;">evilzomb.ru/hltv/</a><br>
+                <strong>Аудио-синхронизация:</strong> мощнейший 808-sub бас дроп точно на 4.5с при первом хедшоте!
             </div>
             <div class="montage-spec">
-                <strong>Уникальные визуальные эффекты в моменты убийств:</strong><br>
-                <span class="fx-tag">Sniper Shockwave</span>
-                <span class="fx-tag">Kinetic Zoom Punch</span>
-                <span class="fx-tag">Bullet-Time Chromatic Aberration</span>
-                <span class="fx-tag">Dual Strobe</span>
-                <span class="fx-tag">Negative Invert Glitch</span>
-                <span class="fx-tag">1-Tap Bloom Freeze</span>
-                <span class="fx-tag">Bio-Scanner Radar HUD</span>
-                <span class="fx-tag">Gib Saturation Bloom</span>
-                <span class="fx-tag">12-Gauge Recoil Kick</span>
-                <span class="fx-tag">Cyber RGB Glitch Wipe</span>
+                <strong>10 Уникальных VFX на убийствах:</strong><br>
+                <span class="fx-tag">#1 FAMAS Shockwave</span>
+                <span class="fx-tag">#2 Galil Kinetic Zoom</span>
+                <span class="fx-tag">#3 Bullet-Time Aberration</span>
+                <span class="fx-tag">#4 XM1014 Dual Strobe</span>
+                <span class="fx-tag">#5 UMP45 Negative Glitch</span>
+                <span class="fx-tag">#6 M4A1 Freeze Bloom</span>
+                <span class="fx-tag">#7 Bio-Scanner Radar</span>
+                <span class="fx-tag">#8 Blood Pulse Splatter</span>
+                <span class="fx-tag">#9 AWP Recoil Screen Tilt</span>
+                <span class="fx-tag">#10 Cyber RGB Wipe Finale</span>
             </div>
         </div>
     </div>
 
-    <!-- INDIVIDUAL CLIPS GRID -->
+    <!-- 10 REAL DEMO CLIPS -->
     <div class="section-title">
         <span>🎬</span>
-        <span>Исходные Топ-10 Моментов (First-Person, 1.0x Real-Time Speed)</span>
+        <span>10 Исходных Реальных Моментов с evilzomb.ru (1.0x Real-Time, First-Person)</span>
     </div>
 
     <div class="grid">
@@ -322,21 +326,21 @@
         <div class="card">
             <div class="video-wrapper">
                 <video controls preload="metadata">
-                    <source src="clips/clip_01.mp4" type="video/mp4">
+                    <source src="clips_evilzomb/clip_01.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="card-body">
                 <div class="card-title">
-                    <span>#01 — Shadow-Death</span>
-                    <span class="score">120 pts</span>
+                    <span>#01 — Player_21 <span class="badge-hs">5 KILLS</span></span>
+                    <span class="score">435 pts</span>
                 </div>
                 <div class="meta-row">
-                    <span>🗺️ bio_asalto_f</span>
-                    <span>🔫 SG550 (2 kills)</span>
+                    <span>🗺️ bio_ziger_azt</span>
+                    <span>🔫 FAMAS, Deagle, HE</span>
                     <span>⏱️ 9.5s</span>
                 </div>
                 <div class="victims">
-                    Уничтожены: <strong>Helios</strong>, <strong>Death Knight</strong>
+                    Уничтожены: <strong>Zombie_26</strong> [HS], <strong>Zombie_16</strong> [HS], <strong>Zombie_23</strong>, <strong>Zombie_24</strong>, <strong>Zombie_30</strong> [HS]
                 </div>
             </div>
         </div>
@@ -345,21 +349,21 @@
         <div class="card">
             <div class="video-wrapper">
                 <video controls preload="metadata">
-                    <source src="clips/clip_02.mp4" type="video/mp4">
+                    <source src="clips_evilzomb/clip_02.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="card-body">
                 <div class="card-title">
-                    <span>#02 — Death Knight <span class="badge hs">HEADSHOT</span></span>
-                    <span class="score">115 pts</span>
+                    <span>#02 — Player_6 <span class="badge-hs">TRIPLE HS</span></span>
+                    <span class="score">330 pts</span>
                 </div>
                 <div class="meta-row">
-                    <span>🗺️ bio_arena_fl</span>
-                    <span>🔫 AWP</span>
-                    <span>⏱️ 5.5s</span>
+                    <span>🗺️ zm_biohazard_base_mx004</span>
+                    <span>🔫 Galil (3 kills)</span>
+                    <span>⏱️ 9.5s</span>
                 </div>
                 <div class="victims">
-                    Уничтожен: <strong>thesofafox</strong>
+                    Уничтожены: <strong>Zombie_8</strong> [HS], <strong>Zombie_5</strong> [HS], <strong>Zombie_19</strong> [HS]
                 </div>
             </div>
         </div>
@@ -368,21 +372,21 @@
         <div class="card">
             <div class="video-wrapper">
                 <video controls preload="metadata">
-                    <source src="clips/clip_03.mp4" type="video/mp4">
+                    <source src="clips_evilzomb/clip_03.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="card-body">
                 <div class="card-title">
-                    <span>#03 — thesofafox <span class="badge hs">HEADSHOT</span></span>
-                    <span class="score">115 pts</span>
+                    <span>#03 — Player_21 <span class="badge-hs">TRIPLE HS</span></span>
+                    <span class="score">330 pts</span>
                 </div>
                 <div class="meta-row">
-                    <span>🗺️ zm_colors_rb3</span>
-                    <span>🔫 AWP</span>
-                    <span>⏱️ 5.5s</span>
+                    <span>🗺️ bio_talka</span>
+                    <span>🔫 Galil (3 kills)</span>
+                    <span>⏱️ 9.5s</span>
                 </div>
                 <div class="victims">
-                    Уничтожен: <strong>Zombie_10</strong>
+                    Уничтожены: <strong>Zombie_27</strong> [HS], <strong>Zombie_4</strong> [HS], <strong>Zombie_10</strong> [HS]
                 </div>
             </div>
         </div>
@@ -391,21 +395,21 @@
         <div class="card">
             <div class="video-wrapper">
                 <video controls preload="metadata">
-                    <source src="clips/clip_04.mp4" type="video/mp4">
+                    <source src="clips_evilzomb/clip_04.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="card-body">
                 <div class="card-title">
-                    <span>#04 — shooterman</span>
-                    <span class="score">110 pts</span>
+                    <span>#04 — Player_1 <span class="badge-hs">DOUBLE HS</span></span>
+                    <span class="score">210 pts</span>
                 </div>
                 <div class="meta-row">
-                    <span>🗺️ bio_$2000$_rbs_f2</span>
-                    <span>🔫 MP5NAVY (2 kills)</span>
-                    <span>⏱️ 9.5s</span>
+                    <span>🗺️ zm_2day_rbt_f4</span>
+                    <span>🔫 XM1014 Auto-Shotgun</span>
+                    <span>⏱️ 9.3s</span>
                 </div>
                 <div class="victims">
-                    Уничтожены: <strong>Shadow-Death</strong>, <strong>BDM-WhiteViper</strong>
+                    Уничтожены: <strong>Zombie_8</strong> [HS], <strong>Zombie_18</strong> [HS]
                 </div>
             </div>
         </div>
@@ -414,21 +418,21 @@
         <div class="card">
             <div class="video-wrapper">
                 <video controls preload="metadata">
-                    <source src="clips/clip_05.mp4" type="video/mp4">
+                    <source src="clips_evilzomb/clip_05.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="card-body">
                 <div class="card-title">
-                    <span>#05 — Death Knight</span>
-                    <span class="score">110 pts</span>
+                    <span>#05 — Player_21 <span class="badge-hs">TRIPLE KILL</span></span>
+                    <span class="score">310 pts</span>
                 </div>
                 <div class="meta-row">
-                    <span>🗺️ bio_arena_fl</span>
-                    <span>🔫 UMP45 (2 kills)</span>
-                    <span>⏱️ 6.6s</span>
+                    <span>🗺️ bio_valak</span>
+                    <span>🔫 UMP45, USP, HE</span>
+                    <span>⏱️ 9.5s</span>
                 </div>
                 <div class="victims">
-                    Уничтожены: <strong>shooterman</strong>, <strong>Helios</strong>
+                    Уничтожены: <strong>Zombie_11</strong> [HS], <strong>Zombie_15</strong>, <strong>Zombie_24</strong> [HS]
                 </div>
             </div>
         </div>
@@ -437,21 +441,21 @@
         <div class="card">
             <div class="video-wrapper">
                 <video controls preload="metadata">
-                    <source src="clips/clip_06.mp4" type="video/mp4">
+                    <source src="clips_evilzomb/clip_06.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="card-body">
                 <div class="card-title">
-                    <span>#06 — blueguile <span class="badge hs">HEADSHOT</span></span>
-                    <span class="score">105 pts</span>
+                    <span>#06 — Player_12 <span class="badge-hs">TRIPLE KILL</span></span>
+                    <span class="score">295 pts</span>
                 </div>
                 <div class="meta-row">
-                    <span>🗺️ bio_arena_fl</span>
-                    <span>🔫 DEAGLE</span>
-                    <span>⏱️ 5.5s</span>
+                    <span>🗺️ zm_restart_v3</span>
+                    <span>🔫 M4A1 Silenced</span>
+                    <span>⏱️ 9.5s</span>
                 </div>
                 <div class="victims">
-                    Уничтожен: <strong>Zombie_10</strong>
+                    Уничтожены: <strong>Zombie_16</strong>, <strong>Zombie_14</strong> [HS], <strong>Zombie_19</strong> [HS]
                 </div>
             </div>
         </div>
@@ -460,21 +464,21 @@
         <div class="card">
             <div class="video-wrapper">
                 <video controls preload="metadata">
-                    <source src="clips/clip_07.mp4" type="video/mp4">
+                    <source src="clips_evilzomb/clip_07.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="card-body">
                 <div class="card-title">
-                    <span>#07 — BDM-WhiteViper <span class="badge hs">HEADSHOT</span></span>
-                    <span class="score">105 pts</span>
+                    <span>#07 — Player_15 <span class="badge-hs">GRENADE TRIPLE</span></span>
+                    <span class="score">285 pts</span>
                 </div>
                 <div class="meta-row">
-                    <span>🗺️ bio_blocks_pro</span>
-                    <span>🔫 DEAGLE</span>
-                    <span>⏱️ 5.5s</span>
+                    <span>🗺️ bio_snow_na2</span>
+                    <span>💣 High-Explosive Grenade</span>
+                    <span>⏱️ 8.4s</span>
                 </div>
                 <div class="victims">
-                    Уничтожен: <strong>Dk-Unknown</strong>
+                    Уничтожены: <strong>Zombie_16</strong>, <strong>Zombie_24</strong>, <strong>Zombie_28</strong> (одной гранатой!)
                 </div>
             </div>
         </div>
@@ -483,21 +487,21 @@
         <div class="card">
             <div class="video-wrapper">
                 <video controls preload="metadata">
-                    <source src="clips/clip_08.mp4" type="video/mp4">
+                    <source src="clips_evilzomb/clip_08.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="card-body">
                 <div class="card-title">
-                    <span>#08 — blueguile <span class="badge hs">HEADSHOT</span></span>
-                    <span class="score">100 pts</span>
+                    <span>#08 — Player_20 <span class="badge-hs">DOUBLE HS</span></span>
+                    <span class="score">205 pts</span>
                 </div>
                 <div class="meta-row">
-                    <span>🗺️ bio_$2000$_rbs_f2</span>
-                    <span>🔫 SCOUT</span>
-                    <span>⏱️ 5.5s</span>
+                    <span>🗺️ bio_arena_fl</span>
+                    <span>🔫 M4A1, Deagle</span>
+                    <span>⏱️ 7.5s</span>
                 </div>
                 <div class="victims">
-                    Уничтожен: <strong>Helios</strong>
+                    Уничтожены: <strong>[EZ] Site: evilzomb.ru</strong> [HS], <strong>Zombie_24</strong> [HS]
                 </div>
             </div>
         </div>
@@ -506,21 +510,21 @@
         <div class="card">
             <div class="video-wrapper">
                 <video controls preload="metadata">
-                    <source src="clips/clip_09.mp4" type="video/mp4">
+                    <source src="clips_evilzomb/clip_09.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="card-body">
                 <div class="card-title">
-                    <span>#09 — Dk-Unknown <span class="badge hs">HEADSHOT</span></span>
-                    <span class="score">100 pts</span>
+                    <span>#09 — Player_18 <span class="badge-hs">AWP HEADSHOT</span></span>
+                    <span class="score">200 pts</span>
                 </div>
                 <div class="meta-row">
-                    <span>🗺️ bio_$2000$_rbs_f2</span>
-                    <span>🔫 M3</span>
-                    <span>⏱️ 5.5s</span>
+                    <span>🗺️ zm_dust_world_rbt</span>
+                    <span>🔫 AWP, HE Grenade</span>
+                    <span>⏱️ 9.5s</span>
                 </div>
                 <div class="victims">
-                    Уничтожен: <strong>thesofafox</strong>
+                    Уничтожены: <strong>Zombie_5</strong> [HS], <strong>Zombie_24</strong>
                 </div>
             </div>
         </div>
@@ -529,28 +533,47 @@
         <div class="card">
             <div class="video-wrapper">
                 <video controls preload="metadata">
-                    <source src="clips/clip_10.mp4" type="video/mp4">
+                    <source src="clips_evilzomb/clip_10.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="card-body">
                 <div class="card-title">
-                    <span>#10 — Helios <span class="badge hs">HEADSHOT</span></span>
-                    <span class="score">100 pts</span>
+                    <span>#10 — Player_8 <span class="badge-hs">DOUBLE HS</span></span>
+                    <span class="score">190 pts</span>
                 </div>
                 <div class="meta-row">
-                    <span>🗺️ bio_2000_x_kizaki</span>
-                    <span>🔫 XM1014</span>
-                    <span>⏱️ 5.5s</span>
+                    <span>🗺️ bio_oldhouse</span>
+                    <span>🔫 M4A1 Carbine</span>
+                    <span>⏱️ 6.2s</span>
                 </div>
                 <div class="victims">
-                    Уничтожен: <strong>shooterman</strong>
+                    Уничтожены: <strong>Zombie_2</strong> [HS], <strong>Zombie_14</strong> [HS]
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="author-box">
-        <p><strong>EvilShtrib CS 1.6 Highlights System</strong> &bull; Сервер: <code>185.225.201.113:27015</code> &bull; Музыка: Alexi Action & Dedpled — <em>Negative (Phonk House)</em> [Creative Commons BY 3.0]</p>
+    <!-- PREVIOUS 42s TEST MONTAGE -->
+    <div class="section-title">
+        <span>📼</span>
+        <span>Предыдущий 42-Секундный Тестовый Монтаж (Initial Test Montage)</span>
+    </div>
+
+    <div class="montage-hero" style="margin-bottom: 24px;">
+        <div class="montage-header">
+            <div class="montage-title">
+                <span class="montage-badge">INITIAL TEST</span>
+                <span>EvilShtrib Kill Highlights (42s Test Version)</span>
+            </div>
+            <div class="montage-music">
+                🎵 Alexi Action & Dedpled — <em>Negative (Phonk House)</em>
+            </div>
+        </div>
+        <div class="montage-video-box">
+            <video controls preload="metadata">
+                <source src="EvilShtrib_Montage.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
 
 </body>
