@@ -10,6 +10,7 @@ import shutil
 import subprocess
 import time
 import cv2
+import numpy as np
 
 sys.path.insert(0, os.path.dirname(__file__))
 from analyze_highlights import find_top_highlights
@@ -81,6 +82,7 @@ def render_single_moment(moment, clip_num, total_clips):
         "spec_mode_internal 4",
         ";".join(["wait"] * 25),
         *cycle_commands,
+        "dem_pause 0",
         "dem_speed 1.0",
         "gamma 4",
         "brightness 4",
@@ -122,6 +124,17 @@ def render_single_moment(moment, clip_num, total_clips):
         print(f"  [ERROR] No frames captured for clip {clip_num}!")
         clean_cstrike_artifacts()
         return None
+        
+    # Verify dynamic motion across frames
+    if len(bmps) >= 60:
+        f_start = cv2.imread(bmps[0])
+        f_mid = cv2.imread(bmps[len(bmps)//2])
+        f_end = cv2.imread(bmps[-1])
+        motion_mid = float(np.mean(np.abs(f_start.astype(float) - f_mid.astype(float))))
+        motion_end = float(np.mean(np.abs(f_mid.astype(float) - f_end.astype(float))))
+        print(f"  Motion verification: start->mid delta={motion_mid:.2f}, mid->end delta={motion_end:.2f}")
+        if motion_mid < 1.0 and motion_end < 1.0:
+            print("  [WARNING] Low motion detected, clip might be paused!")
         
     # 5. Encode with FFmpeg (H.264 / avc1 + yuv420p + faststart for full Chrome/Web support)
     first_frame = cv2.imread(bmps[0])
