@@ -1,0 +1,9 @@
+# Ignore raw demo files
+demos/*.dem
+demos/*.zip
+*.dem
+*.bmp
+*.tga
+*.tmp
+__pycache__/
+*.pyc
