@@ -1,7 +1,11 @@
 """
-EvilShtrib CS 1.6 Zombie Highlights - Montage Generator.
-Creates a high-energy cinematic montage with custom kill FX, Phonk House music,
-and server branding.
+EvilShtrib CS 1.6 Zombie Highlights - Montage Generator (v2.0 Refined).
+Features:
+- Transparent floating cyber intro over live gameplay footage
+- Completely redesigned esports HUD (Zero text overlap, elegant line spacing & typography)
+- High-contrast Kill Tracker with ample spacing and visual hierarchy
+- Frame-perfect 808-sub bass drop sync at 4.5s
+- 10 distinct, non-repeating kill VFX
 """
 
 import os
@@ -19,16 +23,24 @@ OUT_DIR = BASE_DIR
 FFMPEG_EXE = r"C:\Users\CauMo\AppData\Roaming\Python\Python312\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v9.0.2.exe"
 
 # Fonts
-FONT_TITLE = ImageFont.truetype(r"C:\Windows\Fonts\impact.ttf", 68)
-FONT_SUB = ImageFont.truetype(r"C:\Windows\Fonts\segoeuib.ttf", 28)
-FONT_IP = ImageFont.truetype(r"C:\Windows\Fonts\consola.ttf", 36)
-FONT_HUD = ImageFont.truetype(r"C:\Windows\Fonts\segoeuib.ttf", 20)
-FONT_HUD_BOLD = ImageFont.truetype(r"C:\Windows\Fonts\segoeuib.ttf", 22)
-FONT_FEATURE = ImageFont.truetype(r"C:\Windows\Fonts\segoeuib.ttf", 24)
+FONT_INTRO_TITLE = ImageFont.truetype(r"C:\Windows\Fonts\impact.ttf", 68)
+FONT_INTRO_SUB = ImageFont.truetype(r"C:\Windows\Fonts\impact.ttf", 40)
+FONT_INTRO_IP = ImageFont.truetype(r"C:\Windows\Fonts\consola.ttf", 32)
+FONT_INTRO_TAG = ImageFont.truetype(r"C:\Windows\Fonts\segoeuib.ttf", 19)
 
-# Clip configurations: (clip_filename, start_frame, end_frame, kill_frame_in_raw, title, weapon_label)
-# Raw clips have their primary kill at frame 75 (2.50s)
-# Trimming ensures >= 1.2s before kill and >= 1.6s after kill
+FONT_HUD_TITLE = ImageFont.truetype(r"C:\Windows\Fonts\segoeuib.ttf", 16)
+FONT_HUD_IP = ImageFont.truetype(r"C:\Windows\Fonts\consola.ttf", 15)
+
+FONT_KILL_TITLE = ImageFont.truetype(r"C:\Windows\Fonts\segoeuib.ttf", 17)
+FONT_KILL_WEAPON = ImageFont.truetype(r"C:\Windows\Fonts\segoeuib.ttf", 14)
+FONT_KILL_TAG = ImageFont.truetype(r"C:\Windows\Fonts\segoeuib.ttf", 11)
+
+FONT_OUTRO_TITLE = ImageFont.truetype(r"C:\Windows\Fonts\impact.ttf", 64)
+FONT_OUTRO_SUB = ImageFont.truetype(r"C:\Windows\Fonts\segoeuib.ttf", 26)
+FONT_OUTRO_IP = ImageFont.truetype(r"C:\Windows\Fonts\consola.ttf", 34)
+FONT_OUTRO_FEATURE = ImageFont.truetype(r"C:\Windows\Fonts\segoeuib.ttf", 22)
+
+# Clip configurations: (file, start, end, kill_in_raw, title, weapon, player, map, fx)
 CLIPS_CONFIG = [
     {
         "file": "clip_01.mp4",
@@ -36,7 +48,8 @@ CLIPS_CONFIG = [
         "end": 135,    # 4.50s (2.00s post-kill)
         "kill": 75,
         "title": "KILL 01 / 10",
-        "weapon": "SG550 SNIPER HEADSHOT",
+        "weapon": "SG550 SNIPER RIFLE",
+        "tag": "DOUBLE KILL",
         "player": "Shadow-Death",
         "map": "bio_asalto_f",
         "fx": 1
@@ -48,6 +61,7 @@ CLIPS_CONFIG = [
         "kill": 75,
         "title": "KILL 02 / 10",
         "weapon": "AWP SNIPER FLICK",
+        "tag": "HEADSHOT",
         "player": "Death Knight",
         "map": "bio_arena_fl",
         "fx": 2
@@ -59,6 +73,7 @@ CLIPS_CONFIG = [
         "kill": 75,
         "title": "KILL 03 / 10",
         "weapon": "AWP BULLET-TIME HEADSHOT",
+        "tag": "HEADSHOT",
         "player": "thesofafox",
         "map": "zm_colors_rb3",
         "fx": 3
@@ -69,7 +84,8 @@ CLIPS_CONFIG = [
         "end": 140,    # 4.66s (2.16s post-kill)
         "kill": 75,
         "title": "KILL 04 / 10",
-        "weapon": "MP5 TACTICAL SPRAYDOWN",
+        "weapon": "MP5NAVY TACTICAL SPRAY",
+        "tag": "DOUBLE KILL",
         "player": "shooterman",
         "map": "bio_$2000$_rbs_f2",
         "fx": 4
@@ -80,7 +96,8 @@ CLIPS_CONFIG = [
         "end": 150,    # 5.00s (double kill at 75 and 108)
         "kill": 75,
         "title": "KILL 05 / 10",
-        "weapon": "UMP45 DOUBLE EXECUTION",
+        "weapon": "UMP45 CLOSE COMBAT",
+        "tag": "DOUBLE KILL",
         "player": "Death Knight",
         "map": "bio_arena_fl",
         "fx": 5
@@ -92,6 +109,7 @@ CLIPS_CONFIG = [
         "kill": 75,
         "title": "KILL 06 / 10",
         "weapon": "DEAGLE ONE-TAP CRITICAL",
+        "tag": "HEADSHOT",
         "player": "blueguile",
         "map": "bio_arena_fl",
         "fx": 6
@@ -103,6 +121,7 @@ CLIPS_CONFIG = [
         "kill": 75,
         "title": "KILL 07 / 10",
         "weapon": "DEAGLE ROOF ELIMINATION",
+        "tag": "HEADSHOT",
         "player": "BDM-WhiteViper",
         "map": "bio_blocks_pro",
         "fx": 7
@@ -114,6 +133,7 @@ CLIPS_CONFIG = [
         "kill": 75,
         "title": "KILL 08 / 10",
         "weapon": "SCOUT EXPLOSIVE GIB",
+        "tag": "HEADSHOT",
         "player": "blueguile",
         "map": "bio_$2000$_rbs_f2",
         "fx": 8
@@ -125,6 +145,7 @@ CLIPS_CONFIG = [
         "kill": 75,
         "title": "KILL 09 / 10",
         "weapon": "12-GAUGE POINT-BLANK M3",
+        "tag": "HEADSHOT",
         "player": "Dk-Unknown",
         "map": "bio_$2000$_rbs_f2",
         "fx": 9
@@ -136,38 +157,133 @@ CLIPS_CONFIG = [
         "kill": 75,
         "title": "KILL 10 / 10",
         "weapon": "AUTO-SHOTGUN XM1014 FINALE",
+        "tag": "HEADSHOT",
         "player": "Helios",
         "map": "bio_2000_x_kizaki",
         "fx": 10
     }
 ]
 
-def render_hud_overlay(frame, cfg, is_kill_active=False):
-    """Draws sleek cyber HUD badges on the frame."""
+def render_hud_overlay(frame, cfg, is_kill_active=False, hud_alpha=1.0):
+    """
+    Renders esports-grade HUD badges:
+    - Top-Left: Clean two-line badge with ZERO text overlap
+    - Bottom-Left: Generously padded kill tracker with divider line and no touching text
+    """
+    if hud_alpha <= 0.01:
+        return frame
+
     h, w = frame.shape[:2]
-    pil_img = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-    draw = ImageDraw.Draw(pil_img, "RGBA")
+    overlay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(overlay)
     
-    # Top-Left: Server Branding Pill
-    pill_x1, pill_y1 = 30, 25
-    pill_w, pill_h = 490, 42
-    draw.rounded_rectangle([pill_x1, pill_y1, pill_x1 + pill_w, pill_y1 + pill_h], radius=8, fill=(10, 15, 20, 190), outline=(0, 255, 120, 220), width=1)
-    draw.text((pill_x1 + 14, pill_y1 + 9), "[☣ EVILSHTRIB BIOHAZARD]", font=FONT_HUD_BOLD, fill=(0, 255, 130))
-    draw.text((pill_x1 + 270, pill_y1 + 10), "185.225.201.113:27015", font=FONT_HUD, fill=(240, 240, 240))
+    a_mult = min(1.0, max(0.0, hud_alpha))
+
+    # --- 1. Top-Left: Server Branding Badge (Two lines, guaranteed zero overlap) ---
+    pill_x1, pill_y1 = 28, 24
+    pill_w, pill_h = 325, 54
+    bg_a = int(210 * a_mult)
+    border_a = int(220 * a_mult)
     
-    # Bottom-Left: Kill Tracker Badge
-    badge_x1, badge_y1 = 30, h - 75
-    badge_w, badge_h = 390, 48
-    bg_color = (25, 45, 25, 220) if is_kill_active else (10, 15, 20, 180)
-    border_color = (0, 255, 180, 255) if is_kill_active else (80, 120, 100, 160)
-    draw.rounded_rectangle([badge_x1, badge_y1, badge_x1 + badge_w, badge_y1 + badge_h], radius=6, fill=bg_color, outline=border_color, width=2 if is_kill_active else 1)
+    # Rounded glass panel
+    draw.rounded_rectangle(
+        [pill_x1, pill_y1, pill_x1 + pill_w, pill_y1 + pill_h],
+        radius=10,
+        fill=(10, 15, 24, bg_a),
+        outline=(0, 255, 130, border_a),
+        width=1
+    )
+    # Neon accent stripe on left edge
+    draw.rounded_rectangle(
+        [pill_x1, pill_y1 + 8, pill_x1 + 4, pill_y1 + pill_h - 8],
+        radius=2,
+        fill=(0, 255, 140, int(255 * a_mult))
+    )
+    # Line 1: Server Name (Neon Green)
+    draw.text(
+        (pill_x1 + 16, pill_y1 + 8),
+        "☣ EVILSHTRIB BIOHAZARD",
+        font=FONT_HUD_TITLE,
+        fill=(0, 255, 140, int(255 * a_mult))
+    )
+    # Line 2: IP Address (Crisp White/Cyan Monospace, placed 22px below Line 1)
+    draw.text(
+        (pill_x1 + 16, pill_y1 + 30),
+        "IP: 185.225.201.113:27015",
+        font=FONT_HUD_IP,
+        fill=(235, 245, 255, int(240 * a_mult))
+    )
+
+    # --- 2. Bottom-Left: Kill Tracker Badge (Height 66px, clear divider, zero text collision) ---
+    badge_x1, badge_y1 = 28, h - 94
+    badge_w, badge_h = 425, 66
     
-    # Kill Title and Weapon
-    title_color = (0, 255, 200) if is_kill_active else (0, 220, 120)
-    draw.text((badge_x1 + 14, badge_y1 + 6), cfg["title"], font=FONT_HUD_BOLD, fill=title_color)
-    draw.text((badge_x1 + 14, badge_y1 + 26), cfg["weapon"], font=FONT_HUD, fill=(230, 230, 230))
+    if is_kill_active:
+        badge_bg = (18, 42, 28, int(230 * a_mult))
+        badge_border = (0, 255, 180, int(255 * a_mult))
+        border_w = 2
+        title_color = (0, 255, 200, int(255 * a_mult))
+    else:
+        badge_bg = (10, 15, 24, int(200 * a_mult))
+        badge_border = (60, 100, 80, int(180 * a_mult))
+        border_w = 1
+        title_color = (0, 240, 130, int(255 * a_mult))
+        
+    draw.rounded_rectangle(
+        [badge_x1, badge_y1, badge_x1 + badge_w, badge_y1 + badge_h],
+        radius=10,
+        fill=badge_bg,
+        outline=badge_border,
+        width=border_w
+    )
     
-    return cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
+    # Line 1: Kill number
+    draw.text(
+        (badge_x1 + 16, badge_y1 + 8),
+        cfg["title"],
+        font=FONT_KILL_TITLE,
+        fill=title_color
+    )
+    
+    # Line 1 Right Tag (e.g. "HEADSHOT" or "DOUBLE KILL")
+    tag_str = cfg.get("tag", "ELIMINATION")
+    tag_w = 95
+    tag_x1 = badge_x1 + badge_w - tag_w - 14
+    tag_y1 = badge_y1 + 8
+    draw.rounded_rectangle(
+        [tag_x1, tag_y1, tag_x1 + tag_w, tag_y1 + 20],
+        radius=4,
+        fill=(25, 45, 35, int(220 * a_mult)),
+        outline=(0, 255, 140, int(180 * a_mult)),
+        width=1
+    )
+    draw.text(
+        (tag_x1 + 10, tag_y1 + 3),
+        tag_str,
+        font=FONT_KILL_TAG,
+        fill=(0, 255, 160, int(255 * a_mult))
+    )
+    
+    # Thin divider line separating Row 1 from Row 2
+    draw.line(
+        [(badge_x1 + 16, badge_y1 + 34), (badge_x1 + badge_w - 16, badge_y1 + 34)],
+        fill=(255, 255, 255, int(45 * a_mult)),
+        width=1
+    )
+    
+    # Line 2: Weapon and Player Name (Generous space below divider, light clean silver/white)
+    weapon_full = f"{cfg['weapon']}  [{cfg['player']}]"
+    draw.text(
+        (badge_x1 + 16, badge_y1 + 40),
+        weapon_full,
+        font=FONT_KILL_WEAPON,
+        fill=(230, 238, 245, int(240 * a_mult))
+    )
+
+    # Composite onto frame
+    base_pil = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)).convert("RGBA")
+    final_pil = Image.alpha_composite(base_pil, overlay)
+    return cv2.cvtColor(np.array(final_pil.convert("RGB")), cv2.COLOR_RGB2BGR)
 
 # --- Kill Visual Effects (FX 1 to 10) ---
 
@@ -213,7 +329,6 @@ def apply_fx_3(frame, d):
         s = shifts[d]
         if s > 0:
             b, g, r = cv2.split(res)
-            # Blue shifted left, Red shifted right
             b_shifted = np.zeros_like(b)
             r_shifted = np.zeros_like(r)
             b_shifted[:, :-s] = b[:, s:]
@@ -227,10 +342,8 @@ def apply_fx_4(frame, d):
     """MP5: Double Strobe Burst & Dark Pulsing Border Vignette."""
     h, w = frame.shape[:2]
     res = frame.copy()
-    # Strobe pulses
     if d in [0, 1, 3, 4]:
         res = cv2.convertScaleAbs(res, alpha=1.35, beta=25)
-    # Pulsing dark vignette
     if 0 <= d <= 12:
         Y, X = np.ogrid[:h, :w]
         dist = np.sqrt((X - w//2)**2 + (Y - h//2)**2)
@@ -247,13 +360,11 @@ def apply_fx_5(frame, d):
     if d == 0:
         return 255 - res
     elif 1 <= d <= 7:
-        # Boost Red, mute Green/Blue
         b, g, r = cv2.split(res)
         r = np.clip(r.astype(np.float32) * 1.35 + 20, 0, 255).astype(np.uint8)
         g = np.clip(g.astype(np.float32) * 0.7, 0, 255).astype(np.uint8)
         b = np.clip(b.astype(np.float32) * 0.7, 0, 255).astype(np.uint8)
         res = cv2.merge([b, g, r])
-        # Random horizontal slice glitch
         for y_start in [140, 360, 520]:
             slice_h = 35
             offset = int(25 * np.sin(d * 2.5))
@@ -265,9 +376,7 @@ def apply_fx_6(frame, d):
     h, w = frame.shape[:2]
     res = frame.copy()
     if 0 <= d <= 3:
-        # High contrast exposure pop
         res = cv2.convertScaleAbs(res, alpha=1.28, beta=30)
-        # Radial bloom blend
         blurred = cv2.GaussianBlur(res, (31, 31), 0)
         res = cv2.addWeighted(res, 0.7, blurred, 0.3, 0)
     return res
@@ -277,15 +386,12 @@ def apply_fx_7(frame, d):
     h, w = frame.shape[:2]
     res = frame.copy()
     if 0 <= d <= 12:
-        # Toxic green scanner tint
         b, g, r = cv2.split(res)
         g = np.clip(g.astype(np.float32) * 1.4 + 25, 0, 255).astype(np.uint8)
         r = np.clip(r.astype(np.float32) * 0.45, 0, 255).astype(np.uint8)
         b = np.clip(b.astype(np.float32) * 0.45, 0, 255).astype(np.uint8)
         res = cv2.merge([b, g, r])
-        # CRT scanlines
         res[::3, :] = (res[::3, :].astype(np.float32) * 0.65).astype(np.uint8)
-        # Expanding holographic targeting circle
         radius = int(25 + d * 9)
         cv2.circle(res, (w//2, h//2), radius, (0, 255, 120), 2, cv2.LINE_AA)
         cv2.drawMarker(res, (w//2, h//2), (0, 255, 200), cv2.MARKER_TILTED_CROSS, radius + 10, 1, cv2.LINE_AA)
@@ -296,12 +402,10 @@ def apply_fx_8(frame, d):
     h, w = frame.shape[:2]
     res = frame.copy()
     if 0 <= d <= 10:
-        # Saturation boost in HSV
         hsv = cv2.cvtColor(res, cv2.COLOR_BGR2HSV).astype(np.float32)
         hsv[:, :, 1] = np.clip(hsv[:, :, 1] * 1.85, 0, 255)
         hsv[:, :, 2] = np.clip(hsv[:, :, 2] * 1.15, 0, 255)
         res = cv2.cvtColor(hsv.astype(np.uint8), cv2.COLOR_HSV2BGR)
-        # Zoom punch 1.12x into blood splatter
         z = 1.12 - (d * 0.012)
         if z > 1.0:
             hc, wc = int(h / z), int(w / z)
@@ -318,7 +422,6 @@ def apply_fx_9(frame, d):
         dy = kicks[d]
         M = np.float32([[1, 0, 0], [0, 1, dy]])
         res = cv2.warpAffine(res, M, (w, h), borderMode=cv2.BORDER_REFLECT)
-        # Film grain / flash
         if d <= 3:
             noise = np.random.normal(0, 18, (h, w, 3)).astype(np.int16)
             res = np.clip(res.astype(np.int16) + noise + 20, 0, 255).astype(np.uint8)
@@ -329,13 +432,11 @@ def apply_fx_10(frame, d):
     h, w = frame.shape[:2]
     res = frame.copy()
     if 0 <= d <= 15:
-        # Glitch RGB displacement
         b, g, r = cv2.split(res)
         shift = int(18 * np.sin(d * 1.5))
         b = np.roll(b, -shift, axis=1)
         r = np.roll(r, shift, axis=1)
         res = cv2.merge([b, g, r])
-        # Digital artifact blocks
         for i in range(4):
             y_b = int((i * 160 + d * 25) % (h - 40))
             res[y_b:y_b+30, :] = np.roll(res[y_b:y_b+30, :], int(35 * np.cos(d + i)), axis=1)
@@ -354,108 +455,160 @@ FX_MAP = {
     10: apply_fx_10,
 }
 
-# --- Intro & Outro Generators ---
+# --- Transparent Intro & Outro Generators ---
 
-def generate_intro_frames(num_frames=90):
-    """3.0s Animated Cyber Intro."""
+def generate_transparent_intro_frames(bg_clip_path, num_frames=90):
+    """
+    3.0s Transparent Intro:
+    The live gameplay is visible directly under a floating, semi-transparent cyber glass
+    logo card. Over frames 65..90, the glass smoothly dissolves, transitioning cleanly
+    into full-screen gameplay before the drop.
+    """
     w, h = 1280, 720
-    frames = []
     
+    # Read first 45 frames from clip_01 for background pre-roll
+    cap = cv2.VideoCapture(bg_clip_path)
+    raw_bg_frames = []
+    while len(raw_bg_frames) < 45:
+        ret, f = cap.read()
+        if not ret: break
+        raw_bg_frames.append(f)
+    cap.release()
+    
+    if not raw_bg_frames:
+        raw_bg_frames = [np.zeros((h, w, 3), dtype=np.uint8)]
+        
+    intro_frames = []
     for f in range(num_frames):
-        img = np.zeros((h, w, 3), dtype=np.uint8)
+        # Time stretch 45 raw frames across 90 intro frames (0.5x speed pre-roll)
+        bg_idx = min(int(f * 0.5), len(raw_bg_frames) - 1)
+        bg_frame = raw_bg_frames[bg_idx].copy()
         
-        # Cyber dark background gradient
-        for y in range(h):
-            val = int(12 + 16 * (y / h))
-            img[y, :] = [int(val * 0.7), int(val * 1.1), int(val * 0.8)]
+        # Subtle vignette and contrast grade to make text pop while keeping game visible
+        Y, X = np.ogrid[:h, :w]
+        dist = np.sqrt((X - w//2)**2 + (Y - h//2)**2)
+        max_dist = np.sqrt((w//2)**2 + (h//2)**2)
+        vignette = 1.0 - 0.35 * (dist / max_dist)
+        for c in range(3):
+            bg_frame[:, :, c] = np.clip(bg_frame[:, :, c] * vignette * 0.85, 0, 255).astype(np.uint8)
             
-        # Animated grid
-        offset_y = int((f * 2) % 40)
-        for x in range(0, w, 40):
-            cv2.line(img, (x, 0), (x, h), (20, 35, 25), 1)
-        for y in range(offset_y, h, 40):
-            cv2.line(img, (0, y), (w, y), (20, 35, 25), 1)
-            
-        # Animated particles
-        np.random.seed(42 + f)
-        pts_x = np.random.randint(50, w - 50, 20)
-        pts_y = np.random.randint(50, h - 50, 20)
-        for px, py in zip(pts_x, pts_y):
-            cv2.circle(img, (px, py), 2, (0, 200, 100), -1)
-            
-        # Draw with Pillow
-        pil_img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-        draw = ImageDraw.Draw(pil_img, "RGBA")
-        
-        # Border frame
-        draw.rounded_rectangle([100, 80, w - 100, h - 80], radius=16, outline=(0, 255, 120, 200), width=2)
-        draw.rounded_rectangle([106, 86, w - 106, h - 86], radius=14, outline=(0, 180, 80, 120), width=1)
-        
-        # Glitch effect during first 15 frames
-        glitch_x = int(6 * np.sin(f * 2.8)) if f < 18 else 0
-        
-        # Server Title
-        draw.text((w // 2 - 180 + glitch_x, 140), "☣  EVILSHTRIB  ☣", font=FONT_TITLE, fill=(0, 255, 140))
-        draw.text((w // 2 - 220 + glitch_x, 235), "CLASSIC BIOHAZARD", font=FONT_TITLE, fill=(255, 255, 255))
-        draw.text((w // 2 - 200, 335), "TOP 10 ZOMBIE KILL HIGHLIGHTS", font=FONT_SUB, fill=(0, 220, 255))
-        
-        # IP Box
-        ip_box = [w // 2 - 340, 410, w // 2 + 340, 500]
-        pulse = int(25 * np.sin(f * 0.2))
-        draw.rounded_rectangle(ip_box, radius=12, fill=(10, 40, 25, 220), outline=(0, 230 + pulse, 120), width=3)
-        draw.text((w // 2 - 300, 435), "IP: 185.225.201.113:27015", font=FONT_IP, fill=(0, 255, 230))
-        
-        # Countdown/Drop teaser
-        if f >= 60:
-            draw.text((w // 2 - 110, 545), "DROP IN 3... 2... 1...", font=FONT_SUB, fill=(255, 180, 0))
+        # Alpha fade out during frames 65 to 90
+        if f < 65:
+            alpha = 1.0
         else:
-            draw.text((w // 2 - 145, 545), "OFFICIAL SERVER PROMO", font=FONT_SUB, fill=(160, 200, 180))
+            alpha = max(0.0, (num_frames - f) / 25.0)
             
-        frame_bgr = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
+        # Create transparent RGBA overlay
+        overlay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(overlay)
         
-        # Glitch slice flash at frame 85..89
-        if f >= 85:
-            flash_alpha = (f - 85) / 5.0
-            frame_bgr = cv2.addWeighted(frame_bgr, 1.0 - flash_alpha, np.full_like(frame_bgr, 255), flash_alpha, 0)
+        if alpha > 0.01:
+            # Floating Center Glass Box
+            box_w, box_h = 760, 310
+            bx1 = (w - box_w) // 2
+            by1 = (h - box_h) // 2 - 25
+            bx2 = bx1 + box_w
+            by2 = by1 + box_h
             
-        frames.append(frame_bgr)
+            glass_alpha = int(160 * alpha)
+            border_alpha = int(220 * alpha)
+            
+            # Draw frosted semi-transparent glass panel
+            draw.rounded_rectangle(
+                [bx1, by1, bx2, by2],
+                radius=18,
+                fill=(8, 14, 24, glass_alpha),
+                outline=(0, 255, 140, border_alpha),
+                width=2
+            )
+            # Inner subtle accent line
+            draw.rounded_rectangle(
+                [bx1 + 5, by1 + 5, bx2 - 5, by2 - 5],
+                radius=14,
+                outline=(0, 200, 100, int(70 * alpha)),
+                width=1
+            )
+            
+            # Subtle glitch displacement during first 15 frames
+            glitch_x = int(5 * np.sin(f * 2.8)) if f < 15 else 0
+            
+            # Title: EVILSHTRIB (with shadow)
+            title_text = "☣  EVILSHTRIB  ☣"
+            draw.text(((w - 480)//2 + glitch_x + 2, by1 + 25 + 2), title_text, font=FONT_INTRO_TITLE, fill=(0, 0, 0, int(180 * alpha)))
+            draw.text(((w - 480)//2 + glitch_x, by1 + 25), title_text, font=FONT_INTRO_TITLE, fill=(0, 255, 140, int(255 * alpha)))
+            
+            # Subtitle: CLASSIC BIOHAZARD
+            sub_text = "CLASSIC BIOHAZARD"
+            draw.text(((w - 365)//2 + 2, by1 + 110 + 2), sub_text, font=FONT_INTRO_SUB, fill=(0, 0, 0, int(180 * alpha)))
+            draw.text(((w - 365)//2, by1 + 110), sub_text, font=FONT_INTRO_SUB, fill=(255, 255, 255, int(255 * alpha)))
+            
+            # IP Pill inside panel
+            ip_w, ip_h = 560, 50
+            ip_x1 = (w - ip_w) // 2
+            ip_y1 = by1 + 175
+            draw.rounded_rectangle(
+                [ip_x1, ip_y1, ip_x1 + ip_w, ip_y1 + ip_h],
+                radius=10,
+                fill=(14, 38, 28, int(190 * alpha)),
+                outline=(0, 255, 200, int(220 * alpha)),
+                width=2
+            )
+            ip_text = "IP: 185.225.201.113:27015"
+            draw.text(((w - 450)//2, ip_y1 + 9), ip_text, font=FONT_INTRO_IP, fill=(0, 255, 230, int(255 * alpha)))
+            
+            # Tag: OFFICIAL ZOMBIE HIGHLIGHTS
+            tag_text = "OFFICIAL ZOMBIE HIGHLIGHTS // 24/7"
+            draw.text(((w - 350)//2, by1 + 248), tag_text, font=FONT_INTRO_TAG, fill=(180, 225, 205, int(220 * alpha)))
+            
+        # Composite overlay on top of gameplay frame
+        base_pil = Image.fromarray(cv2.cvtColor(bg_frame, cv2.COLOR_BGR2RGB)).convert("RGBA")
+        final_pil = Image.alpha_composite(base_pil, overlay)
+        out_bgr = cv2.cvtColor(np.array(final_pil.convert("RGB")), cv2.COLOR_RGB2BGR)
         
-    return frames
+        # When intro ends (frames 70..90), top-left HUD pill fades in
+        if f >= 70:
+            hud_fade_in = (f - 70) / 20.0
+            out_bgr = render_hud_overlay(out_bgr, CLIPS_CONFIG[0], is_kill_active=False, hud_alpha=hud_fade_in)
+            
+        intro_frames.append(out_bgr)
+        
+    return intro_frames
 
 def generate_outro_frames(num_frames=135):
-    """4.5s Server Call to Action Outro."""
+    """4.5s High-Conversion Server Call to Action Outro."""
     w, h = 1280, 720
     frames = []
     
     for f in range(num_frames):
         img = np.zeros((h, w, 3), dtype=np.uint8)
         
-        # Dark green/cyan cyber background
+        # Cyber dark gradient
         for y in range(h):
-            val = int(10 + 18 * (y / h))
-            img[y, :] = [int(val * 0.9), int(val * 1.2), int(val * 0.7)]
+            val = int(10 + 16 * (y / h))
+            img[y, :] = [int(val * 0.9), int(val * 1.2), int(val * 0.75)]
             
-        # Grid
+        # Animated grid
+        offset_y = int((f * 1.5) % 40)
         for x in range(0, w, 40):
-            cv2.line(img, (x, 0), (x, h), (20, 35, 25), 1)
-        for y in range(0, h, 40):
-            cv2.line(img, (0, y), (w, y), (20, 35, 25), 1)
+            cv2.line(img, (x, 0), (x, h), (18, 32, 24), 1)
+        for y in range(offset_y, h, 40):
+            cv2.line(img, (0, y), (w, y), (18, 32, 24), 1)
             
         pil_img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
         draw = ImageDraw.Draw(pil_img, "RGBA")
         
-        # Frame
+        # Border
         draw.rounded_rectangle([90, 60, w - 90, h - 60], radius=16, outline=(0, 255, 140, 220), width=2)
         
         # Header
-        draw.text((w // 2 - 250, 100), "JOIN THE SURVIVORS", font=FONT_TITLE, fill=(0, 255, 140))
-        draw.text((w // 2 - 220, 185), "EVILSHTRIB > CLASSIC BIOHAZARD", font=FONT_SUB, fill=(255, 255, 255))
+        draw.text(((w - 530) // 2, 95), "JOIN THE SURVIVORS", font=FONT_OUTRO_TITLE, fill=(0, 255, 140))
+        draw.text(((w - 430) // 2, 175), "EVILSHTRIB > CLASSIC BIOHAZARD", font=FONT_OUTRO_SUB, fill=(255, 255, 255))
         
-        # Large IP Connect Box
-        box = [w // 2 - 400, 240, w // 2 + 400, 345]
+        # Large IP Connect Box (Ample padding, clean height)
+        box = [w // 2 - 400, 230, w // 2 + 400, 335]
         draw.rounded_rectangle(box, radius=14, fill=(10, 45, 30, 240), outline=(0, 255, 200, 255), width=3)
-        draw.text((w // 2 - 370, 260), "CONNECT 185.225.201.113:27015", font=FONT_IP, fill=(0, 255, 255))
-        draw.text((w // 2 - 260, 305), "Open Console (~) and paste connect command", font=FONT_HUD, fill=(180, 240, 200))
+        draw.text(((w - 550) // 2, 250), "CONNECT 185.225.201.113:27015", font=FONT_OUTRO_IP, fill=(0, 255, 255))
+        draw.text(((w - 390) // 2, 296), "Open Console (~) and paste connect command", font=FONT_KILL_WEAPON, fill=(180, 240, 200))
         
         # Features list
         features = [
@@ -464,16 +617,16 @@ def generate_outro_frames(num_frames=135):
             "★  Balanced Zombie Classes, Knockback & Weapons",
             "★  Low Ping, 24/7 Uptime, Dedicated Server & Fast DL"
         ]
-        start_y = 375
+        start_y = 365
         for i, feat in enumerate(features):
-            draw.text((w // 2 - 330, start_y + i * 40), feat, font=FONT_FEATURE, fill=(220, 240, 230))
+            draw.text(((w - 600) // 2, start_y + i * 42), feat, font=FONT_OUTRO_FEATURE, fill=(220, 240, 230))
             
         # Bottom call
-        draw.text((w // 2 - 165, 560), "SEE YOU ON THE BATTLEFIELD!", font=FONT_SUB, fill=(0, 255, 180))
+        draw.text(((w - 340) // 2, 555), "SEE YOU ON THE BATTLEFIELD!", font=FONT_OUTRO_SUB, fill=(0, 255, 180))
         
         frame_bgr = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
         
-        # Fade out to black over last 35 frames
+        # Smooth fade out to black over last 35 frames
         if f >= num_frames - 35:
             alpha = (num_frames - f) / 35.0
             frame_bgr = (frame_bgr.astype(np.float32) * alpha).astype(np.uint8)
@@ -483,17 +636,18 @@ def generate_outro_frames(num_frames=135):
     return frames
 
 def build_montage():
-    print("=== STARTING EVILSHTRIB MONTAGE GENERATOR ===")
+    print("=== STARTING EVILSHTRIB MONTAGE GENERATOR (v2.0 REFINED) ===")
     
     all_frames = []
     
-    # 1. Intro (3.0s = 90 frames)
-    print("Generating Intro sequence (90 frames)...")
-    intro_frames = generate_intro_frames(90)
+    # 1. Transparent Intro (3.0s = 90 frames) over gameplay
+    clip_01_path = os.path.join(CLIPS_DIR, "clip_01.mp4")
+    print("Generating Transparent Intro sequence (90 frames)...")
+    intro_frames = generate_transparent_intro_frames(clip_01_path, 90)
     all_frames.extend(intro_frames)
-    print(f"  Intro added. Total frames: {len(all_frames)}")
+    print(f"  Transparent Intro added. Total frames: {len(all_frames)}")
     
-    # 2. Clips (10 clips)
+    # 2. Clips (10 clips with redesigned HUD)
     for idx, cfg in enumerate(CLIPS_CONFIG, 1):
         clip_path = os.path.join(CLIPS_DIR, cfg["file"])
         print(f"Processing Clip {idx:02d}: {cfg['file']} (start={cfg['start']}, end={cfg['end']}, kill={cfg['kill']})")
@@ -515,19 +669,19 @@ def build_montage():
         clip_processed = []
         for raw_idx in range(start, end):
             frame = raw_frames[raw_idx].copy()
-            d = raw_idx - kill_raw  # relative distance to kill
+            d = raw_idx - kill_raw
             
             # Apply kill FX
             frame = fx_fn(frame, d)
             
-            # Apply HUD overlay
+            # Apply Redesigned HUD Overlay
             is_kill_active = (0 <= d <= 8)
-            frame = render_hud_overlay(frame, cfg, is_kill_active=is_kill_active)
+            frame = render_hud_overlay(frame, cfg, is_kill_active=is_kill_active, hud_alpha=1.0)
             
             clip_processed.append(frame)
             
         all_frames.extend(clip_processed)
-        print(f"  Clip {idx:02d} added: {len(clip_processed)} frames ({len(clip_processed)/30.0:.2f}s). Total frames: {len(all_frames)}")
+        print(f"  Clip {idx:02d} added: {len(clip_processed)} frames. Total frames: {len(all_frames)}")
         
     # 3. Outro (4.5s = 135 frames)
     print("Generating Outro sequence (135 frames)...")
@@ -546,12 +700,11 @@ def build_montage():
     print("Intermediate video written successfully!")
     
     # 5. Prepare Audio
-    # Total video duration:
     total_dur = len(all_frames) / 30.0
     print(f"Total video duration: {total_dur:.2f}s")
     
     # Cut audio from 3.3s to match video duration with smooth fade in and fade out
-    audio_in = os.path.join(TOOLS_DIR, "phonk_house.wav")
+    audio_in = os.path.join(TOOLS_DIR, "phonk_house.opus")
     audio_out = os.path.join(TOOLS_DIR, "montage_audio_final.wav")
     fade_out_start = max(0.0, total_dur - 4.0)
     
@@ -579,11 +732,18 @@ def build_montage():
         "-pix_fmt", "yuv420p",
         "-c:a", "aac",
         "-b:a", "256k",
+        "-movflags", "+faststart",
         "-shortest",
         final_output
     ]
     subprocess.run(cmd_mux, check=True)
-    print("=== MONTAGE GENERATION COMPLETE! ===")
+    
+    # Clean up intermediate wav and temp mp4
+    for temp_f in [temp_video, audio_out]:
+        try: os.remove(temp_f)
+        except OSError: pass
+        
+    print("=== MONTAGE GENERATION v2.0 COMPLETE! ===")
     print(f"Final MP4: {final_output}")
     print(f"File size: {os.path.getsize(final_output) / (1024*1024):.2f} MB")
 
