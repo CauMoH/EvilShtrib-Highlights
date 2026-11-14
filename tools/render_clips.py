@@ -55,15 +55,36 @@ def render_single_moment(moment, clip_num, total_clips):
     num_frames = int(moment['duration'] * 30.0)
     cfg_path = os.path.join(CSTRIKE_DIR, 'render_clip.cfg')
     
+    t_start = max(1.0, moment['time_start'])
+    wait_jump_ticks = max(200, int(t_start * 0.75))
+    
+    # Build cycle commands to spectate killer_id in first person
+    cycle_commands = []
+    clicks = max(0, moment['killer_id'] - 1)
+    for _ in range(clicks):
+        cycle_commands.append("+attack")
+        cycle_commands.append(";".join(["wait"] * 5))
+        cycle_commands.append("-attack")
+        cycle_commands.append(";".join(["wait"] * 25))
+        
     script_lines = [
         "dem_forcehltv 1",
         "hud_saytext 1",
         "hud_deathnotice_time 6",
         "viewdemo render_clip",
-        ";".join(["wait"] * 30),
-        f"dem_jump {moment['time_start']:.1f}",
-        ";".join(["wait"] * 15),
-        f"trackplayer {moment['killer_id']}",
+        ";".join(["wait"] * 100),
+        f"dem_jump {t_start:.1f}",
+        ";".join(["wait"] * wait_jump_ticks),
+        "spec_autodirector 0",
+        "spec_autodirector_internal 0",
+        "spec_mode 4 0",
+        "spec_mode_internal 4",
+        ";".join(["wait"] * 25),
+        *cycle_commands,
+        "dem_speed 1.0",
+        "gamma 4",
+        "brightness 4",
+        "host_framerate 0.03333333",
         "startmovie clip_frame 30",
         ";".join(["wait"] * num_frames),
         "endmovie",
@@ -83,7 +104,8 @@ def render_single_moment(moment, clip_num, total_clips):
         '+exec', 'render_clip.cfg'
     ])
     
-    timeout_sec = max(30, int(moment['duration'] * 4))
+    seek_est = wait_jump_ticks / 30.0
+    timeout_sec = max(45, int(moment['duration'] * 4 + seek_est * 2))
     try:
         proc.wait(timeout=timeout_sec)
     except subprocess.TimeoutExpired:
@@ -113,6 +135,7 @@ def render_single_moment(moment, clip_num, total_clips):
         ffmpeg_exe, '-y',
         '-framerate', '30',
         '-i', input_pattern,
+        '-vf', 'eq=gamma=1.4:contrast=1.15:brightness=0.04',
         '-c:v', 'libx264',
         '-pix_fmt', 'yuv420p',
         '-profile:v', 'main',

@@ -12,7 +12,6 @@ from collections import defaultdict, Counter
 DEMOS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'demos')
 
 CS_WEAPONS = {
-    'knife': 100,
     'awp': 50,
     'hegrenade': 45,
     'grenade': 45,
@@ -60,15 +59,22 @@ def parse_demo_kills(dem_path):
         f.seek(playback_offset)
         data = f.read(playback_len)
 
-    # Extract player names from status strings
+    # Extract player names from svc_updateuserinfo (0x0D = 13)
     player_names = {}
+    for m in re.finditer(rb'\x0d([\x01-\x20])(....)\\name\\([^\\]+)', data):
+        slot = m.group(1)[0]
+        name = m.group(3).decode('latin1', 'ignore').strip()
+        if name and name != "HLTV":
+            player_names[slot] = name
+
+    # Fallback to status strings if any slot missing
     for m in re.finditer(rb'#\s*(\d+)\s+\"([^\"]{2,32})\"', data):
         try:
             raw_name = m.group(2)
             if all(32 <= b <= 126 for b in raw_name):
                 pid = int(m.group(1).decode())
                 pname = raw_name.decode('ascii').strip()
-                if 2 <= len(pname) <= 24 and not any(k in pname for k in ['\r', '\n', '\\', '/']):
+                if pid not in player_names and 2 <= len(pname) <= 24:
                     player_names[pid] = pname
         except Exception:
             pass
