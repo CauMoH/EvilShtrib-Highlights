@@ -101,19 +101,26 @@ def render_single_moment(moment, clip_num, total_clips):
         clean_cstrike_artifacts()
         return None
         
-    # 5. Encode with cv2.VideoWriter
+    # 5. Encode with FFmpeg (H.264 / avc1 + yuv420p + faststart for full Chrome/Web support)
     first_frame = cv2.imread(bmps[0])
     height, width, _ = first_frame.shape
     
-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    writer = cv2.VideoWriter(out_mp4, fourcc, 30.0, (width, height))
+    import imageio_ffmpeg
+    ffmpeg_exe = imageio_ffmpeg.get_ffmpeg_exe()
     
-    for b_path in bmps:
-        img = cv2.imread(b_path)
-        if img is not None:
-            writer.write(img)
-            
-    writer.release()
+    input_pattern = os.path.join(CSTRIKE_DIR, 'clip_frame%05d.bmp')
+    cmd = [
+        ffmpeg_exe, '-y',
+        '-framerate', '30',
+        '-i', input_pattern,
+        '-c:v', 'libx264',
+        '-pix_fmt', 'yuv420p',
+        '-profile:v', 'main',
+        '-crf', '20',
+        '-movflags', '+faststart',
+        out_mp4
+    ]
+    subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
     clean_cstrike_artifacts()
     
     file_size_mb = os.path.getsize(out_mp4) / (1024 * 1024)
