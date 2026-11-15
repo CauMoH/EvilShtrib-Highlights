@@ -100,3 +100,31 @@
 | 14 | `bio_dusty_2x2_fl_2026-11-15_06-35-00.dem` | bio_dusty_2x2_fl | Fat Matt | 277.6 - 280.9 | HE Grenade / MAC-10 | 2 (0 HS, span 2.22s) |
 | 15 | `bio_nova_b2_2026-11-15_11-41-00.dem` | bio_nova_b2 | [SMUT]DarkDruid | 168.1 - 171.5 | Night Hawk .50C (Deagle) | 2 (0 HS, span 2.22s) |
 | 16 | `bio_blocks_pro_2026-11-15_05-19-00.dem` | bio_blocks_pro | pyr0` | 293.4 - 296.8 | IDF Defender (Galil) | 2 (1 HS, span 2.24s) |
+
+---
+
+## EvilShtrib Volume 6 (`final_videos/EvilShtrib_60s_Vol6.mp4`)
+
+* **Длительность:** 60.00с (1800 кадров @ 30 FPS)
+* **Количество фрагов:** 32 (100% экшен от первого лица, вид строго из глаз людей)
+* **Музыка:** Andrew Codeman - "Run" (Breakbeat/Electronic, CC-BY 3.0)
+* **Особенность:** 100% вид от лица Людей (Counter-Terrorists). Камера spectate строго от первого лица (spec_mode 4 0) с оружием в руках, перекрестием и синим HUD людей. Полное исключение ракурсов от лица зомби (0% зомби).
+
+| # | Демка | Карта | Стрелок | Таймкод (сек) | Оружие | Кол-во фрагов |
+|---|---|---|---|---|---|---|
+| 01 | `bio_horror_box_ff_2026-11-15_08-43-00.dem` | bio_horror_box_ff | kingkilla | 62.7 - 66.4 | SG552 | 2 (span 2.18s) |
+| 02 | `bio_horror_box_ff_2026-11-15_08-43-00.dem` | bio_horror_box_ff | HappyKiD | 70.5 - 74.3 | SG552 | 2 (span 1.12s) |
+| 03 | `bio_nova_b2_2026-11-15_11-41-00.dem` | bio_nova_b2 | Galdalfus | 1269.6 - 1273.3 | M4A1 | 2 (span 1.10s) |
+| 04 | `bio_mono_b1_2026-11-15_10-50-00.dem` | bio_mono_b1 | aliendewd1 | 1323.9 - 1327.7 | SG550 | 2 (span 1.47s) |
+| 05 | `bio_resident_beta_2026-11-15_12-57-00.dem` | bio_resident_beta | [SMUT]DarkDruid | 505.9 - 509.7 | M249 | 2 (span 3.15s) |
+| 06 | `bio_india_b2__2026-11-15_09-08-00.dem` | bio_india_b2_ | Dk-Unknown | 550.2 - 553.9 | AUG | 2 (span 2.38s) |
+| 07 | `bio_resident_beta_2026-11-15_12-57-00.dem` | bio_resident_beta | Dk-Unknown | 775.3 - 779.0 | SG552 | 2 (span 2.37s) |
+| 08 | `bio_nova_b2_2026-11-15_11-41-00.dem` | bio_nova_b2 | Fat Matt | 782.5 - 786.3 | UMP45 | 2 (span 0.13s) |
+| 09 | `bio_nova_b2_2026-11-15_11-41-00.dem` | bio_nova_b2 | Fat Matt | 811.8 - 815.6 | UMP45 | 2 (span 3.04s) |
+| 10 | `bio_re-ziger_2026-11-15_12-31-00.dem` | bio_re-ziger | Galdalfus | 1301.0 - 1304.7 | G3SG1 | 2 (span 1.78s) |
+| 11 | `bio_horror_box_ff_2026-11-15_08-43-00.dem` | bio_horror_box_ff | [SMUT]DarkDruid | 954.3 - 958.0 | M249 | 2 (span 1.33s) |
+| 12 | `bio_dusty_2x2_fl_2026-11-15_06-35-00.dem` | bio_dusty_2x2_fl | [SMUT]DarkDruid | 955.1 - 958.9 | G3SG1 | 2 (span 2.43s) |
+| 13 | `bio_horror_box_ff_2026-11-15_08-43-00.dem` | bio_horror_box_ff | [SMUT]DarkDruid | 1231.9 - 1235.6 | AUG | 2 (span 2.17s) |
+| 14 | `bio_lego_ez_2026-11-15_09-33-00.dem` | bio_lego_ez | HappyKiD | 1067.3 - 1071.0 | M3 | 2 (span 2.12s) |
+| 15 | `bio_re-ziger_2026-11-15_12-31-00.dem` | bio_re-ziger | shooterman | 1075.2 - 1078.9 | M249 | 2 (span 1.15s) |
+| 16 | `bio_blocks_rb5_2026-11-15_05-44-00.dem` | bio_blocks_rb5 | pyr0` | 1147.3 - 1151.1 | M249 | 2 (span 2.18s) |

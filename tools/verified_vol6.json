@@ -1,0 +1,266 @@
+[
+  {
+    "demo": "bio_horror_box_ff_2026-11-15_08-43-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_horror_box_ff_2026-11-15_08-43-00.dem",
+    "map": "bio_horror_box_ff",
+    "killer": "kingkilla",
+    "time": 64.3752212524414,
+    "span": 2.1801605224609375,
+    "kills": 2,
+    "wpn": "sg552",
+    "cycle": 0,
+    "all_ct_cycles": [
+      0,
+      2,
+      3,
+      5,
+      6
+    ]
+  },
+  {
+    "demo": "bio_horror_box_ff_2026-11-15_08-43-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_horror_box_ff_2026-11-15_08-43-00.dem",
+    "map": "bio_horror_box_ff",
+    "killer": "HappyKiD",
+    "time": 72.21501922607422,
+    "span": 1.11669921875,
+    "kills": 2,
+    "wpn": "sg552",
+    "cycle": 0,
+    "all_ct_cycles": [
+      0,
+      2,
+      3,
+      4,
+      6,
+      7
+    ]
+  },
+  {
+    "demo": "bio_nova_b2_2026-11-15_11-41-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_nova_b2_2026-11-15_11-41-00.dem",
+    "map": "bio_nova_b2",
+    "killer": "Galdalfus",
+    "time": 1271.2425537109375,
+    "span": 1.103759765625,
+    "kills": 2,
+    "wpn": "m4a1",
+    "cycle": 0
+  },
+  {
+    "demo": "bio_mono_b1_2026-11-15_10-50-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_mono_b1_2026-11-15_10-50-00.dem",
+    "map": "bio_mono_b1",
+    "killer": "aliendewd1",
+    "time": 1325.6285400390625,
+    "span": 1.4713134765625,
+    "kills": 2,
+    "wpn": "sg550",
+    "cycle": 0
+  },
+  {
+    "demo": "bio_resident_beta_2026-11-15_12-57-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_resident_beta_2026-11-15_12-57-00.dem",
+    "map": "bio_resident_beta",
+    "killer": "[SMUT]DarkDruid",
+    "time": 507.613037109375,
+    "span": 3.15057373046875,
+    "kills": 2,
+    "wpn": "m249",
+    "cycle": 0,
+    "all_ct_cycles": [
+      0,
+      1,
+      2,
+      7
+    ]
+  },
+  {
+    "demo": "bio_india_b2__2026-11-15_09-08-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_india_b2__2026-11-15_09-08-00.dem",
+    "map": "bio_india_b2_",
+    "killer": "Dk-Unknown",
+    "time": 551.8331909179688,
+    "span": 2.3814697265625,
+    "kills": 2,
+    "wpn": "aug",
+    "cycle": 0,
+    "all_ct_cycles": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "demo": "bio_resident_beta_2026-11-15_12-57-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_resident_beta_2026-11-15_12-57-00.dem",
+    "map": "bio_resident_beta",
+    "killer": "Dk-Unknown",
+    "time": 776.995361328125,
+    "span": 2.36700439453125,
+    "kills": 2,
+    "wpn": "sg552",
+    "cycle": 0,
+    "all_ct_cycles": [
+      0,
+      2,
+      3,
+      6
+    ]
+  },
+  {
+    "demo": "bio_nova_b2_2026-11-15_11-41-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_nova_b2_2026-11-15_11-41-00.dem",
+    "map": "bio_nova_b2",
+    "killer": "Fat Matt",
+    "time": 784.208740234375,
+    "span": 0.13446044921875,
+    "kills": 2,
+    "wpn": "ump45",
+    "cycle": 0,
+    "all_ct_cycles": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      7
+    ]
+  },
+  {
+    "demo": "bio_nova_b2_2026-11-15_11-41-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_nova_b2_2026-11-15_11-41-00.dem",
+    "map": "bio_nova_b2",
+    "killer": "Fat Matt",
+    "time": 813.5006713867188,
+    "span": 3.04425048828125,
+    "kills": 2,
+    "wpn": "ump45",
+    "cycle": 0,
+    "all_ct_cycles": [
+      0,
+      3,
+      4,
+      6
+    ]
+  },
+  {
+    "demo": "bio_re-ziger_2026-11-15_12-31-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_re-ziger_2026-11-15_12-31-00.dem",
+    "map": "bio_re-ziger",
+    "killer": "Galdalfus",
+    "time": 1302.66552734375,
+    "span": 1.7755126953125,
+    "kills": 2,
+    "wpn": "g3sg1",
+    "cycle": 0
+  },
+  {
+    "demo": "bio_horror_box_ff_2026-11-15_08-43-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_horror_box_ff_2026-11-15_08-43-00.dem",
+    "map": "bio_horror_box_ff",
+    "killer": "[SMUT]DarkDruid",
+    "time": 955.9498901367188,
+    "span": 1.33453369140625,
+    "kills": 2,
+    "wpn": "m249",
+    "cycle": 0,
+    "all_ct_cycles": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "demo": "bio_dusty_2x2_fl_2026-11-15_06-35-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_dusty_2x2_fl_2026-11-15_06-35-00.dem",
+    "map": "bio_dusty_2x2_fl",
+    "killer": "[SMUT]DarkDruid",
+    "time": 956.811767578125,
+    "span": 2.43402099609375,
+    "kills": 2,
+    "wpn": "g3sg1",
+    "cycle": 0,
+    "all_ct_cycles": [
+      0,
+      1,
+      3,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "demo": "bio_horror_box_ff_2026-11-15_08-43-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_horror_box_ff_2026-11-15_08-43-00.dem",
+    "map": "bio_horror_box_ff",
+    "killer": "[SMUT]DarkDruid",
+    "time": 1233.5740966796875,
+    "span": 2.1719970703125,
+    "kills": 2,
+    "wpn": "aug",
+    "cycle": 0
+  },
+  {
+    "demo": "bio_lego_ez_2026-11-15_09-33-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_lego_ez_2026-11-15_09-33-00.dem",
+    "map": "bio_lego_ez",
+    "killer": "HappyKiD",
+    "time": 1068.9666748046875,
+    "span": 2.1181640625,
+    "kills": 2,
+    "wpn": "m3",
+    "cycle": 0,
+    "all_ct_cycles": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "demo": "bio_re-ziger_2026-11-15_12-31-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_re-ziger_2026-11-15_12-31-00.dem",
+    "map": "bio_re-ziger",
+    "killer": "shooterman",
+    "time": 1076.84619140625,
+    "span": 1.1544189453125,
+    "kills": 2,
+    "wpn": "m249",
+    "cycle": 0,
+    "all_ct_cycles": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "demo": "bio_blocks_rb5_2026-11-15_05-44-00.dem",
+    "full_path": "c:\\Users\\CauMo\\source\\repos\\EvilShtrib-Highlights\\demos_shtriban\\bio_blocks_rb5_2026-11-15_05-44-00.dem",
+    "map": "bio_blocks_rb5",
+    "killer": "pyr0`",
+    "time": 1149.0166015625,
+    "span": 2.1834716796875,
+    "kills": 2,
+    "wpn": "m249",
+    "cycle": 0
+  }
+]
