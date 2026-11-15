@@ -99,7 +99,7 @@
 
 | Выпуск | Файл 16:9 HD | Версия 9:16 Reels | Хронометраж | Фрагов | Особенность |
 | :--- | :--- | :--- | :---: | :---: | :--- |
-| **Vol 7** | [`EvilShtrib_60s_Vol7.mp4`](final_videos/EvilShtrib_60s_Vol7.mp4) | [`EvilShtrib_60s_Vol7_9x16.mp4`](final_videos/EvilShtrib_60s_Vol7_9x16.mp4) | **60.00с** | **32** | 100% вид от лица реального стрелка (камера привязана к killer_name), 0% зомби, Phonk House |
+| **Vol 7** | [`EvilShtrib_60s_Vol7.mp4`](final_videos/EvilShtrib_60s_Vol7.mp4) | [`EvilShtrib_60s_Vol7_9x16.mp4`](final_videos/EvilShtrib_60s_Vol7_9x16.mp4) ([Instagram Reel](https://www.instagram.com/reel/Dfxqn3LHI_b/)) | **60.00с** | **32** | 100% вид от лица реального стрелка (камера привязана к killer_name), 0% зомби, Phonk House |
 | **Vol 6** | [`EvilShtrib_60s_Vol6.mp4`](final_videos/EvilShtrib_60s_Vol6.mp4) | [`EvilShtrib_60s_Vol6_9x16.mp4`](final_videos/EvilShtrib_60s_Vol6_9x16.mp4) | **60.00с** | **32** | 100% In-Eye вид от лица людей с оружием, новый трек Andrew Codeman |
 | **Vol 5** | [`EvilShtrib_60s_Vol5.mp4`](final_videos/EvilShtrib_60s_Vol5.mp4) | [`EvilShtrib_60s_Vol5_9x16.mp4`](final_videos/EvilShtrib_60s_Vol5_9x16.mp4) | **60.00с** | **32** | Автоматическая верификация киллфида, 16 серий |
 | **Vol 4** | [`EvilShtrib_60s_Vol4.mp4`](final_videos/EvilShtrib_60s_Vol4.mp4) | [`EvilShtrib_60s_Vol4_9x16.mp4`](final_videos/EvilShtrib_60s_Vol4_9x16.mp4) | **60.00с** | **33** | Ультра-плотный экшен (интервал фрагов $\le 1.8$с) |

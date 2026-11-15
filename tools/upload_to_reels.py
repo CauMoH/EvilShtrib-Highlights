@@ -111,6 +111,30 @@ def upload_reels(token, account_id, video_url=DEFAULT_VIDEO_URL, caption=DEFAULT
     media_id = pub_res.get("id")
     print(f"\n🎉 REELS PUBLISHED SUCCESSFULLY!")
     print(f"Instagram Media ID: {media_id}")
+    
+    permalink = None
+    try:
+        perm_url = f"https://graph.facebook.com/v21.0/{media_id}?fields=permalink,shortcode&access_token={token}"
+        p_res = make_request(perm_url, proxy=proxy)
+        permalink = p_res.get("permalink")
+        if permalink:
+            print(f"Instagram URL: {permalink}")
+    except Exception as pe:
+        print(f"Notice: {pe}")
+        
+    res_path = os.path.join(os.path.dirname(__file__), "publish_result.json")
+    try:
+        with open(res_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "status": "success",
+                "media_id": media_id,
+                "permalink": permalink,
+                "video_url": video_url,
+                "published_at": time.strftime("%Y-%m-%d %H:%M:%S")
+            }, f, indent=2, ensure_ascii=False)
+    except Exception:
+        pass
+        
     return True
 
 if __name__ == "__main__":

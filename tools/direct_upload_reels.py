@@ -62,7 +62,8 @@ def upload_local_reels(video_path, caption):
     
     t0 = time.time()
     with open(video_path, "rb") as f:
-        up_resp = requests.post(upload_uri, headers=upload_headers, data=f, timeout=300)
+        video_bytes = f.read()
+    up_resp = requests.post(upload_uri, headers=upload_headers, data=video_bytes, timeout=300)
         
     print(f"Upload finished in {time.time()-t0:.1f}s. HTTP {up_resp.status_code}", flush=True)
     try:
@@ -118,7 +119,35 @@ def upload_local_reels(video_path, caption):
     print("\n" + "=" * 60, flush=True)
     print(f"🎉 REELS PUBLISHED SUCCESSFULLY!", flush=True)
     print(f"Instagram Media ID: {media_id}", flush=True)
+    
+    permalink = None
+    try:
+        p_resp = requests.get(
+            f"https://graph.facebook.com/v21.0/{media_id}?fields=permalink,shortcode&access_token={token}",
+            timeout=15
+        )
+        p_data = p_resp.json()
+        permalink = p_data.get("permalink")
+        if permalink:
+            print(f"Instagram URL: {permalink}", flush=True)
+    except Exception as pe:
+        print(f"Warning fetching permalink: {pe}", flush=True)
+        
     print("=" * 60, flush=True)
+    
+    res_path = os.path.join(os.path.dirname(__file__), "publish_result.json")
+    try:
+        with open(res_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "status": "success",
+                "media_id": media_id,
+                "permalink": permalink,
+                "video_file": os.path.basename(video_path),
+                "published_at": time.strftime("%Y-%m-%d %H:%M:%S")
+            }, f, indent=2, ensure_ascii=False)
+    except Exception as fe:
+        pass
+        
     return media_id
 
 if __name__ == "__main__":
