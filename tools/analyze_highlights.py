@@ -60,12 +60,14 @@ def parse_demo_kills(dem_path):
         data = f.read(playback_len)
 
     # Extract player names from svc_updateuserinfo (0x0D = 13)
+    # Note: GoldSrc client slot in svc_updateuserinfo is 0-based (0..31),
+    # while DeathMsg killer/victim IDs are 1-based (1..32). We map slot + 1 -> name.
     player_names = {}
-    for m in re.finditer(rb'\x0d([\x01-\x20])(....)\\name\\([^\\]+)', data):
+    for m in re.finditer(rb'\x0d([\x00-\x1f])(....)\\name\\([^\\]+)', data):
         slot = m.group(1)[0]
         name = m.group(3).decode('latin1', 'ignore').strip()
         if name and name != "HLTV":
-            player_names[slot] = name
+            player_names[slot + 1] = name
 
     # Fallback to status strings if any slot missing
     for m in re.finditer(rb'#\s*(\d+)\s+\"([^\"]{2,32})\"', data):

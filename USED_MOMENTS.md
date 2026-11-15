@@ -73,3 +73,30 @@
 | 14 | `bio_blocks_rb5_2026-11-15_05-44-00.dem` | bio_blocks_rb5 | Player_9 | 908.2 | SG550 Sniper | 2 (2 HS, span 1.57s) |
 | 15 | `bio_green_peaks_rb7_2026-11-15_07-52-00.dem` | bio_green_peaks_rb7 | kingkilla | 741.3 | SG552 Commando | 2 (1 HS, span 1.91s) |
 | 16 | `bio_resident_beta_2026-11-15_12-57-00.dem` | bio_resident_beta | Dk-Unknown | 1430.2 | SG550 Sniper | 3 (2 HS, span 1.81s) |
+
+---
+
+## EvilShtrib Volume 5 (`final_videos/EvilShtrib_60s_Vol5.mp4`)
+
+* **Длительность:** 60.00с (1800 кадров @ 30 FPS)
+* **Количество фрагов:** 32 (100% подтвержденный экшен, киллфид в каждом клипе)
+* **Особенность:** Все фрагменты проверены автоматическим сканером киллфида — каждый клип содержит подтвержденные убийства в 80–99% кадров. Никакой беготни, никакой темноты.
+
+| # | Демка | Карта | Стрелок | Таймкод (сек) | Оружие | Кол-во фрагов |
+|---|---|---|---|---|---|---|
+| 01 | `bio_blocks_pro_2026-11-15_05-19-00.dem` | bio_blocks_pro | Galdalfus | 73.3 - 76.6 | SIG SG550 Auto-Sniper | 2 (1 HS, span 0.38s) |
+| 02 | `bio_re-ziger_2026-11-15_12-31-00.dem` | bio_re-ziger | HappyKiD | 386.6 - 389.9 | H&K MP5-Navy 9mm | 2 (1 HS, span 0.95s) |
+| 03 | `bio_omega_b2_2026-11-15_12-06-00.dem` | bio_omega_b2 | HappyKiD | 569.2 - 572.5 | Clarion 5.56 (FAMAS) | 2 (1 HS, span 0.99s) |
+| 04 | `bio_blocks_pro_2026-11-15_05-19-00.dem` | bio_blocks_pro | Fat Matt | 315.4 - 318.7 | FN M249 Para SAW | 2 (1 HS, span 1.01s) |
+| 05 | `bio_blocks_pro_2026-11-15_05-19-00.dem` | bio_blocks_pro | kingkilla | 243.8 - 247.1 | SIG SG550 Auto-Sniper | 2 (0 HS, span 1.10s) |
+| 06 | `bio_india_b2__2026-11-15_09-08-00.dem` | bio_india_b2_ | HappyKiD | 310.8 - 314.1 | Steyr Scout Sniper | 2 (1 HS, span 1.34s) |
+| 07 | `bio_nova_b2_2026-11-15_11-41-00.dem` | bio_nova_b2 | aliendewd1 | 549.5 - 552.8 | D3/AU-1 (G3SG1) | 2 (0 HS, span 1.37s) |
+| 08 | `bio_resident_beta_2026-11-15_12-57-00.dem` | bio_resident_beta | aliendewd1 | 248.1 - 251.4 | D3/AU-1 (G3SG1) | 2 (1 HS, span 1.54s) |
+| 09 | `bio_mono_b1_2026-11-15_10-50-00.dem` | bio_mono_b1 | aliendewd1 | 533.8 - 537.1 | D3/AU-1 (G3SG1) | 2 (1 HS, span 1.54s) |
+| 10 | `bio_blocks_pro_2026-11-15_05-19-00.dem` | bio_blocks_pro | Dk-Unknown | 344.9 - 348.2 | Steyr Scout Sniper | 2 (2 HS, span 1.57s) |
+| 11 | `bio_re-ziger_2026-11-15_12-31-00.dem` | bio_re-ziger | kingkilla | 162.3 - 165.6 | Colt M4A1 Carbine | 2 (1 HS, span 1.73s) |
+| 12 | `bio_re-ziger_2026-11-15_12-31-00.dem` | bio_re-ziger | Fat Matt | 160.6 - 163.9 | .40 Dual Elites | 2 (0 HS, span 1.85s) |
+| 13 | `bio_re-ziger_2026-11-15_12-31-00.dem` | bio_re-ziger | pyr0` | 538.6 - 541.9 | Leone 12 Gauge Super (M3) | 2 (0 HS, span 1.99s) |
+| 14 | `bio_dusty_2x2_fl_2026-11-15_06-35-00.dem` | bio_dusty_2x2_fl | Fat Matt | 277.6 - 280.9 | HE Grenade / MAC-10 | 2 (0 HS, span 2.22s) |
+| 15 | `bio_nova_b2_2026-11-15_11-41-00.dem` | bio_nova_b2 | [SMUT]DarkDruid | 168.1 - 171.5 | Night Hawk .50C (Deagle) | 2 (0 HS, span 2.22s) |
+| 16 | `bio_blocks_pro_2026-11-15_05-19-00.dem` | bio_blocks_pro | pyr0` | 293.4 - 296.8 | IDF Defender (Galil) | 2 (1 HS, span 2.24s) |
