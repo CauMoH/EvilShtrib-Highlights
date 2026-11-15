@@ -128,3 +128,31 @@
 | 14 | `bio_lego_ez_2026-11-15_09-33-00.dem` | bio_lego_ez | HappyKiD | 1067.3 - 1071.0 | M3 | 2 (span 2.12s) |
 | 15 | `bio_re-ziger_2026-11-15_12-31-00.dem` | bio_re-ziger | shooterman | 1075.2 - 1078.9 | M249 | 2 (span 1.15s) |
 | 16 | `bio_blocks_rb5_2026-11-15_05-44-00.dem` | bio_blocks_rb5 | pyr0` | 1147.3 - 1151.1 | M249 | 2 (span 2.18s) |
+
+---
+
+## EvilShtrib Volume 7 (`final_videos/EvilShtrib_60s_Vol7.mp4`)
+
+* **Длительность:** 60.00с (1800 кадров @ 30 FPS)
+* **Количество фрагов:** 32 (100% чистый экшен от лица Людей / CT)
+* **Музыка:** Alexi Action & Dedpled - "Negative" (Phonk House, CC-BY 3.0)
+* **Особенность:** Полностью переработана система камеры. Камера spectate строго от первого лица (`spec_mode 4 0`) наведена ровно на стрелка (`killer_name`) через программный цикл `+attack`. В кадре гарантированно отображается стрельба из оружия по зомби, синий CT HUD и регистрация в киллфиде. Исключены FFA/friendly-fire демки и ракурсы от лица зомби (0% зомби).
+
+| # | Демка | Карта | Стрелок | Таймкод (сек) | Оружие | Кол-во фрагов |
+|---|---|---|---|---|---|---|
+| 01 | `bio_nova_b2_2026-11-15_11-41-00.dem` | bio_nova_b2 | Galdalfus | 863.8 - 867.5 | Galil | 2 (0 HS, span 0.82s) |
+| 02 | `bio_spazm_rb2_2026-11-15_16-21-00.dem` | bio_spazm_rb2 | pyr0` | 328.6 - 332.3 | M249 SAW | 2 (0 HS, span 0.89s) |
+| 03 | `bio_omega_b2_2026-11-15_12-06-00.dem` | bio_omega_b2 | shooterman | 1002.6 - 1006.3 | SG552 Commando | 2 (0 HS, span 1.12s) |
+| 04 | `bio_spirit_beta_2026-11-15_16-46-00.dem` | bio_spirit_beta | shooterman | 914.2 - 917.9 | M249 SAW | 2 (0 HS, span 1.37s) |
+| 05 | `bio_spazm_rb2_2026-11-15_16-21-00.dem` | bio_spazm_rb2 | Galdalfus | 757.6 - 761.3 | Dual Elites | 2 (0 HS, span 1.73s) |
+| 06 | `bio_omega_b2_2026-11-15_12-06-00.dem` | bio_omega_b2 | [SMUT]DarkDruid | 773.9 - 777.6 | P90 / P228 | 2 (1 HS, span 1.85s) |
+| 07 | `bio_spazm_rb2_2026-11-15_16-21-00.dem` | bio_spazm_rb2 | Fat Matt | 824.3 - 828.0 | AK-47 | 2 (0 HS, span 2.19s) |
+| 08 | `bio_blocks_rb5_2026-11-15_05-44-00.dem` | bio_blocks_rb5 | Fat Matt | 293.2 - 296.9 | G3SG1 / P228 | 2 (2 HS, span 2.22s) |
+| 09 | `bio_mono_b1_2026-11-15_10-50-00.dem` | bio_mono_b1 | Galdalfus | 360.8 - 364.5 | Scout Sniper | 2 (2 HS, span 2.28s) |
+| 10 | `bio_dusty_2x2_fl_2026-11-15_06-35-00.dem` | bio_dusty_2x2_fl | Fat Matt | 877.4 - 881.1 | USP / M4A1 | 2 (1 HS, span 2.53s) |
+| 11 | `bio_spazm_rb2_2026-11-15_16-21-00.dem` | bio_spazm_rb2 | kingkilla | 388.6 - 392.3 | M249 SAW | 2 (0 HS, span 2.78s) |
+| 12 | `bio_spazm_rb2_2026-11-15_16-21-00.dem` | bio_spazm_rb2 | kingkilla | 845.4 - 849.1 | MP5Navy / P228 | 2 (0 HS, span 2.79s) |
+| 13 | `bio_blocks_pro_2026-11-15_05-19-00.dem` | bio_blocks_pro | kingkilla | 129.2 - 133.0 | AK-47 | 2 (2 HS, span 3.14s) |
+| 14 | `bio_resident_beta_2026-11-15_12-57-00.dem` | bio_resident_beta | Dk-Unknown | 478.1 - 481.9 | M249 SAW | 2 (0 HS, span 3.26s) |
+| 15 | `bio_dusty_2x2_fl_2026-11-15_06-35-00.dem` | bio_dusty_2x2_fl | Fat Matt | 358.6 - 362.4 | M4A1 / Dual Elites | 2 (0 HS, span 3.62s) |
+| 16 | `bio_spirit_beta_2026-11-15_16-46-00.dem` | bio_spirit_beta | HappyKiD | 874.4 - 878.2 | AK-47 / Dual Elites | 2 (0 HS, span 3.63s) |
