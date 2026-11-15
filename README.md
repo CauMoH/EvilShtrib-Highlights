@@ -112,7 +112,7 @@
 
 * **Сборка Volume 6 (16:9 и 9:16):**
   ```powershell
-  python tools/generate_vol6_montage.py
+  python tools/assemble_vol7_perfect.py
   ```
 * **Рендеринг всех клипов Volume 6 с In-Eye верификацией:**
   ```powershell

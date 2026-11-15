@@ -131,28 +131,28 @@
 
 ---
 
-## EvilShtrib Volume 7 (`final_videos/EvilShtrib_60s_Vol7.mp4`)
+## EvilShtrib Volume 7 (`final_videos/EvilShtrib_60s_Vol7.mp4`) - Definitive Pure Action Edition
 
 * **Длительность:** 60.00с (1800 кадров @ 30 FPS)
-* **Количество фрагов:** 32 (100% чистый экшен от лица Людей / CT)
-* **Музыка:** Alexi Action & Dedpled - "Negative" (Phonk House, CC-BY 3.0)
-* **Особенность:** Полностью переработана система камеры. Камера spectate строго от первого лица (`spec_mode 4 0`) наведена ровно на стрелка (`killer_name`) через программный цикл `+attack`. В кадре гарантированно отображается стрельба из оружия по зомби, синий CT HUD и регистрация в киллфиде. Исключены FFA/friendly-fire демки и ракурсы от лица зомби (0% зомби).
+* **Графика:** Полное визуальное оформление восстановлено на всю длину ролика (анимированное интро 3.0с, постоянный бейдж сервера 185.225.201.113:27015 в левом верхнем углу, динамическая плашка KILL STREAK в левом нижнем углу с индикацией фрагов, анимированное оутро 4.0с).
+* **Камера и качество:** 100% вид от первого лица Людей (CT, 0% зомби, 0% стен, 0% пустых коридоров). В каждом клипе нападающие зомби находятся непосредственно в прицеле игрока, видна вспышка выстрелов, кровь и подтвержденное уничтожение в киллфиде.
+* **Музыка:** Alexi Action & Dedpled — "Negative" (Phonk House, CC-BY 3.0)
 
-| # | Демка | Карта | Стрелок | Таймкод (сек) | Оружие | Кол-во фрагов |
-|---|---|---|---|---|---|---|
-| 01 | `bio_nova_b2_2026-11-15_11-41-00.dem` | bio_nova_b2 | Galdalfus | 863.8 - 867.5 | Galil | 2 (0 HS, span 0.82s) |
-| 02 | `bio_spazm_rb2_2026-11-15_16-21-00.dem` | bio_spazm_rb2 | pyr0` | 328.6 - 332.3 | M249 SAW | 2 (0 HS, span 0.89s) |
-| 03 | `bio_omega_b2_2026-11-15_12-06-00.dem` | bio_omega_b2 | shooterman | 1002.6 - 1006.3 | SG552 Commando | 2 (0 HS, span 1.12s) |
-| 04 | `bio_spirit_beta_2026-11-15_16-46-00.dem` | bio_spirit_beta | shooterman | 914.2 - 917.9 | M249 SAW | 2 (0 HS, span 1.37s) |
-| 05 | `bio_spazm_rb2_2026-11-15_16-21-00.dem` | bio_spazm_rb2 | Galdalfus | 757.6 - 761.3 | Dual Elites | 2 (0 HS, span 1.73s) |
-| 06 | `bio_omega_b2_2026-11-15_12-06-00.dem` | bio_omega_b2 | [SMUT]DarkDruid | 773.9 - 777.6 | P90 / P228 | 2 (1 HS, span 1.85s) |
-| 07 | `bio_spazm_rb2_2026-11-15_16-21-00.dem` | bio_spazm_rb2 | Fat Matt | 824.3 - 828.0 | AK-47 | 2 (0 HS, span 2.19s) |
-| 08 | `bio_blocks_rb5_2026-11-15_05-44-00.dem` | bio_blocks_rb5 | Fat Matt | 293.2 - 296.9 | G3SG1 / P228 | 2 (2 HS, span 2.22s) |
-| 09 | `bio_mono_b1_2026-11-15_10-50-00.dem` | bio_mono_b1 | Galdalfus | 360.8 - 364.5 | Scout Sniper | 2 (2 HS, span 2.28s) |
-| 10 | `bio_dusty_2x2_fl_2026-11-15_06-35-00.dem` | bio_dusty_2x2_fl | Fat Matt | 877.4 - 881.1 | USP / M4A1 | 2 (1 HS, span 2.53s) |
-| 11 | `bio_spazm_rb2_2026-11-15_16-21-00.dem` | bio_spazm_rb2 | kingkilla | 388.6 - 392.3 | M249 SAW | 2 (0 HS, span 2.78s) |
-| 12 | `bio_spazm_rb2_2026-11-15_16-21-00.dem` | bio_spazm_rb2 | kingkilla | 845.4 - 849.1 | MP5Navy / P228 | 2 (0 HS, span 2.79s) |
-| 13 | `bio_blocks_pro_2026-11-15_05-19-00.dem` | bio_blocks_pro | kingkilla | 129.2 - 133.0 | AK-47 | 2 (2 HS, span 3.14s) |
-| 14 | `bio_resident_beta_2026-11-15_12-57-00.dem` | bio_resident_beta | Dk-Unknown | 478.1 - 481.9 | M249 SAW | 2 (0 HS, span 3.26s) |
-| 15 | `bio_dusty_2x2_fl_2026-11-15_06-35-00.dem` | bio_dusty_2x2_fl | Fat Matt | 358.6 - 362.4 | M4A1 / Dual Elites | 2 (0 HS, span 3.62s) |
-| 16 | `bio_spirit_beta_2026-11-15_16-46-00.dem` | bio_spirit_beta | HappyKiD | 874.4 - 878.2 | AK-47 / Dual Elites | 2 (0 HS, span 3.63s) |
+| # | Клип | Карта | Стрелок | Оружие | Серия / Тег |
+|---|---|---|---|---|---|
+| 01 | `clips/clip_01.mp4` | bio_colors | Shadow-Death | SIG SG550 AUTO-SNIPER | SNIPER HEADSHOT |
+| 02 | `clips/clip_03.mp4` | bio_colors | thesofafox | H&K UMP-45 SMG | CORRIDOR HOLD |
+| 03 | `clips/clip_05.mp4` | bio_colors | blueguile | H&K UMP-45 SMG | DOUBLE KILL |
+| 04 | `clips/clip_06.mp4` | bio_colors | blueguile | H&K UMP-45 SMG | RAPID BURST |
+| 05 | `clips/clip_08.mp4` | bio_colors | blueguile | SIG SG550 AUTO-SNIPER | ELITE HEADSHOT |
+| 06 | `clips/clip_09.mp4` | bio_colors | BDM-WhiteViper | .40 DUAL ELITES | DUAL SPRAY |
+| 07 | `clips_hyper/clip_01.mp4` | bio_crisis | [Zap Master] BSN | SIG SG550 AUTO-SNIPER | BUNKER DEFENSE |
+| 08 | `clips_hyper/clip_09.mp4` | bio_crisis | solo | COLT M4A1 CARBINE | HEV EXECUTION |
+| 09 | `clips_vol6/clip_06.mp4` | bio_india_b2_ | Dk-Unknown | STEYR AUG BULLPUP | RAPID BURST |
+| 10 | `clips_vol6/clip_07.mp4` | bio_resident_beta | Dk-Unknown | SIG SG552 COMMANDO | DOUBLE TAP |
+| 11 | `clips_vol6/clip_10.mp4` | bio_re-ziger | Dk-Unknown | H&K UMP-45 SMG | WALL PIN DOUBLE |
+| 12 | `clips_vol6/clip_14.mp4` | bio_lego_ez | Dk-Unknown | .40 DUAL ELITES | CANAL BARRAGE |
+| 13 | `clips_vol6/clip_15.mp4` | bio_re-ziger | Dk-Unknown | FN M249 PARA SAW | SAW SPRAYDOWN |
+| 14 | `clips_vol5/clip_10.mp4` | bio_blocks_pro | Dk-Unknown | STEYR SCOUT SNIPER | 2x HEADSHOT |
+| 15 | `clips_vol3/clip_05.mp4` | bio_dust2 | Dk-Unknown | STEYR SCOUT SNIPER | SNIPER FLICK |
+| 16 | `clips_vol3/clip_08.mp4` | bio_dust2 | Dk-Unknown | D3/AU-1 AUTO-SNIPER | CLUTCH DOUBLE |
