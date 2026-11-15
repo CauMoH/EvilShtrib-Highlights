@@ -115,11 +115,33 @@ def upload_reels(token, account_id, video_url=DEFAULT_VIDEO_URL, caption=DEFAULT
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Upload Reels to Instagram via Graph API")
-    parser.add_argument("--token", required=True, help="Meta Graph API Access Token")
-    parser.add_argument("--account-id", required=True, help="Instagram Business Account ID")
+    parser.add_argument("--token", default=None, help="Meta Graph API Access Token (optional, loaded from creds)")
+    parser.add_argument("--account-id", default=None, help="Instagram Business Account ID (optional, loaded from creds)")
     parser.add_argument("--video-url", default=DEFAULT_VIDEO_URL, help="Public URL of the MP4 video")
     parser.add_argument("--caption", default=DEFAULT_CAPTION, help="Reels Caption text")
-    parser.add_argument("--proxy", default=None, help="HTTP/HTTPS Proxy (e.g. http://127.0.0.1:10808)")
+    parser.add_argument("--proxy", default=None, help="HTTP/HTTPS Proxy")
     
     args = parser.parse_args()
-    upload_reels(args.token, args.account_id, args.video_url, args.caption, args.proxy)
+    
+    token = args.token
+    account_id = args.account_id
+    
+    # Auto-load from instagram_credentials.json if not passed
+    creds_path = os.path.join(os.path.dirname(__file__), "instagram_credentials.json")
+    if os.path.exists(creds_path):
+        try:
+            with open(creds_path, "r", encoding="utf-8") as f:
+                creds = json.load(f)
+                if not token:
+                    token = creds.get("long_lived_user_token")
+                if not account_id:
+                    account_id = creds.get("ig_account_id")
+        except Exception as e:
+            print(f"Warning: could not read creds from {creds_path}: {e}")
+            
+    if not token or not account_id:
+        print("ERROR: Meta token and Instagram Account ID must be provided or exist in instagram_credentials.json!")
+        sys.exit(1)
+        
+    upload_reels(token, account_id, args.video_url, args.caption, args.proxy)
+

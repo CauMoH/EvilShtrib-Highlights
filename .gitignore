@@ -8,10 +8,18 @@ demos/*.zip
 __pycache__/
 *.pyc
 *.wav
+*.mp4
 temp_*.mp4
 tools/peak_frames/
 tools/montage_samples/
 tools/hyper_verify_frames/
 tools/contact_sheets/
 tools/*.jpg
+clips_*/
+tools/instagram_credentials.json
+tools/publish_result.json
+tools/server_publish.py
+*credentials*
+*token*
+*secret*
 
